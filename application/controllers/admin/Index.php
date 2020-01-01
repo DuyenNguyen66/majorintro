@@ -32,32 +32,11 @@ class Index extends Base_Controller {
 		$data['customJs'] = array('assets/js/jquery-ui.custom.min.js', 'assets/js/fullcalendar.js', 'assets/js/student.js');
 		$data['parent_id'] = 1;
 		$data['sub_id'] = 0;
+		$data['group'] = 1;
 		$data['content'] = $content;
 		$this->load->view('admin_main_layout', $data);
 	}
 
-	public function getTerm() {
-		$currentDate = date('d/n/Y');
-		$arr = explode('/', $currentDate);
-		$date = $arr[0];
-		$month = $arr[1];
-		$year = $arr[2]; 
-		if($date == 1 && ($month == 2 || $month == 9)) {
-			if($month >= 9 && $month <= 12 || $month == 1)
-			{
-				$term = implode('', array($arr[2], 1));
-			}else
-			{
-				$term = implode('', array($arr[2] - 1 , 2));
-			}
-			$check = $this->term_model->checkTerm($term);
-			if($check == null)
-			{
-				$params['name'] = $term;
-				$this->term_model->add($params);
-			}
-		}
-	}
 	//used
 	public function login() {
 		$admin = $this->session->userdata('admin');

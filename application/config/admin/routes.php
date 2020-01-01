@@ -7,25 +7,14 @@ $route['login'] = 'index/login';
 $route['logout'] = 'index/logout';
 $route['register'] = 'index/register';
 
-$route['building'] = 'building/index';
-$route['room'] = 'room/index';
+$route['add-editor'] = 'editor/add';
+$route['list-editor'] = 'editor/index';
+$route['add-news-a'] = 'news/add';
+$route['list-news-a'] = 'news/getNews';
+$route['major'] = 'major/index';
 
-$route['manager'] = 'index/getManagersList';
-$route['report'] = 'report/index';
-$route['report-m'] = 'report/getReports';
-
-$route['student'] = 'student/index';
-$route['profile/(:num)'] = 'student/profile/$1';
-
-$route['form'] = 'register/index';
-
-$route['electricity-price'] = 'price/index';
-$route['water-price'] = 'price/waterPrice';
-$route['room-price'] = 'price/roomPrice';
-
-//Manager
-$route['dashboard-m'] = 'index/indexManager';
-$route['room-m'] = 'room/roomManager';
-$route['electricity-bill'] = 'bill/elecBill';
-$route['water-bill'] = 'bill/waterBill';
-$route['room-bill'] = 'bill/roomBill';
+//Editor
+$route['dashboard-e'] = 'editor/index';
+$route['add-news'] = 'news/add';
+$route['list-news'] = 'news/getNews';
+$route['account'] = 'editor/getAccount';
