@@ -1,6 +1,6 @@
 <?php
 
-class Admin_model extends CI_Model {
+class   Admin_model extends CI_Model {
 
 	protected $table = 'admin';
 	protected $id_name = 'admin_id';
