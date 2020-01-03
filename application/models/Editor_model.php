@@ -2,7 +2,6 @@
 
 class Editor_model extends CI_Model
 {
-    
     protected $table = 'editor';
     protected $id_name = 'editor_id';
     
@@ -23,7 +22,10 @@ class Editor_model extends CI_Model
     }
     
     public function getAll() {
-        $query = $this->db->get($this->table);
+        $this->db->select('e.*, m.major_name');
+        $this->db->from('editor e');
+        $this->db->join('major m', 'e.major_id = m.major_id', 'left');
+        $query = $this->db->get();
         return $query->result_array();
     }
     
@@ -35,4 +37,12 @@ class Editor_model extends CI_Model
         $this->db->where($this->id_name, $editor_id);
         $this->db->update($this->table, $params);
     }
+    
+    public function updateAccount($editor_id, $params)
+    {
+        $this->db->where('editor_id', $editor_id);
+        $this->db->update($this->table, $params);
+    }
+
+    
 }
