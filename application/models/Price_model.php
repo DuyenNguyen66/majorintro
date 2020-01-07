@@ -2,7 +2,7 @@
 
 class Price_model extends CI_model {
 
-	protected $table = 'price';
+	protected $table = 'Major';
 
 	public function __construct() {
 		parent::__construct();

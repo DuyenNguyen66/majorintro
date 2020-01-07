@@ -1,21 +1,15 @@
 <?php
 
-class Bill_model extends CI_model
+class Group_model extends CI_model
 {
-	protected $table = 'bill';
+	protected $table = 'major_group';
 
 	public function __construct() {
 		parent::__construct();
 	}
 
-	public function getAll($building_id, $bill_type) {
-		$this->db->select('bi.*, r.name as room_name, t.name as term_name');
-		$this->db->from('bill bi');
-		$this->db->join('room r', 'r.room_id = bi.room_id');
-		$this->db->join('term t', 'bi.term_id = t.term_id');
-		$this->db->where(array('r.building_id' => $building_id, 'bi.bill_type' => $bill_type));
-		$this->db->order_by('bi.bill_id', 'desc');
-		$query = $this->db->get();
+	public function getAll() {
+		$query = $this->db->get($this->table);
 		return $query->result_array();
 	}
 

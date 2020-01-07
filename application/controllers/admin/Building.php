@@ -4,7 +4,7 @@ class Building extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('building_model');
+		$this->load->model('Major_model');
 		$this->load->model('floor_model');
 	}
 

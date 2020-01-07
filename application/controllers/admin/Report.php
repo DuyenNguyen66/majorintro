@@ -8,7 +8,7 @@ class Report extends CI_Controller {
 		$this->load->model('admin_model');
 		$this->load->model('term_model');
 		$this->load->model('report_model');
-		$this->load->model('bill_model');
+		$this->load->model('Group_model');
 		$this->load->library('phpexcel/classes/phpexcel');
 	}
 

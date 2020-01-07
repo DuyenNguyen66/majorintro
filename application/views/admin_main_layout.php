@@ -119,11 +119,34 @@
 
                             </ul>
                         </li>
-						<li>
-							<a href="<?php echo base_url('major'); ?>" class="waves-effect<?php echo isset($parent_id) && $parent_id == 4 ? ' active' : ''; ?>">
-                                <i class="fab fa-accusoft"></i> <span>Ngành học</span>
+                        <li class="has_sub">
+                            <a href="#" class="waves-effect<?php echo isset($parent_id) && $parent_id == 4 ? ' active' : ''; ?>">
+                                <i class="fa fa-user-graduate"></i><span>Nhóm ngành</span>
                             </a>
-						</li>
+                            <ul class="list-unstyled">
+                                <li <?php echo($sub_id == 41 ? 'class="active"' : ''); ?>>
+                                    <a href="<?php echo base_url('add-group'); ?>"><span>Thêm mới</span></a>
+                                </li>
+                                <li <?php echo($sub_id == 42 ? 'class="active"' : ''); ?>>
+                                    <a href="<?php echo base_url('list-group'); ?>">Danh sách</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="has_sub">
+                            <a href="#" class="waves-effect<?php echo isset($parent_id) && $parent_id == 5 ? ' active' : ''; ?>">
+                                <i class="fa fa-user-graduate"></i><span>Chuyên ngành</span>
+                            </a>
+                            <ul class="list-unstyled">
+                                <li <?php echo($sub_id == 51 ? 'class="active"' : ''); ?>>
+                                    <a href="<?php echo base_url('add-major'); ?>"><span>Thêm mới</span></a>
+                                </li>
+                                <li <?php echo($sub_id == 52 ? 'class="active"' : ''); ?>>
+                                    <a href="<?php echo base_url('list-major'); ?>">Danh sách</a>
+                                </li>
+
+                            </ul>
+                        </li>
 						
 					<!-- Editor -->
 					<?php elseif(isset($group) && $group == 2):?>

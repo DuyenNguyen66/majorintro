@@ -23,7 +23,7 @@
         					<tr>
                                 <td><?php echo $room_price['name']?></td>
                                 <td><?php echo 'Cho ' . $room_price['description']?></td>
-                                <td><?php echo number_format($room_price['price'])?></td>
+                                <td><?php echo number_format($room_price['Major'])?></td>
                                 <td>
                                 	<button type="button" class="btn btn-inverse btn-custom btn-xs">
                                 		<a href="<?php echo base_url('price/editRoom/' . $room_price['price_id'])?>">Edit</a>

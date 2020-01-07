@@ -43,11 +43,9 @@
                 						<td><?php echo date('d/m/Y h:iA', $row['created_at'])?></td>
                                         <td><?php echo $row['status'] == 0 ? '<a class="btn btn-warning btn-xs">Chưa kích hoạt</a>' : '<a class="btn btn-success btn-xs">Đã kích hoạt</a>'?></td>
                 						<td>
-                                            <?php if($row['major_name'] != null): ?>
                                             <button type="button" class="btn btn-inverse btn-custom btn-xs">
                                                 <a href="<?php echo base_url('editor/edit/' . $row['editor_id'])?>">Sửa</a>
                                             </button>
-                                            <?php endif;?>
                                             <?php if($row['status'] == 1):?>
                                             <button type="button" class="btn btn-inverse btn-custom btn-xs">
                                                 <a href="<?php echo base_url('editor/disable/' . $row['editor_id'])?>">Vô hiệu hóa</a>
@@ -67,48 +65,6 @@
                 	</table>
                 </div>
             </div>
-        </div>
-        <div id="add" class="tab-pane fade">             
-            <form action='' method='POST' enctype="multipart/form-data">
-                <div class="row">
-                    <!-- left column -->
-                    <div class="col-md-6 card-box">
-                        <!-- general form elements -->
-                        <div class="box-body">
-                        	<div class="form-group">   
-                        		<label>Choose Manager</label>                        
-                        		<select class="major_id form-control" name="manager_id" required="">
-                        			<option value="">Select Manager</option>
-                        			<?php foreach($managerOthers as $manager):?>
-                        				<option value="<?php echo $manager['admin_id']?>"><?php echo $manager['full_name']?></option>
-                        			<?php endforeach; ?>
-                        		</select>                    
-                        	</div>
-                        	<div class="form-group">   
-                        		<label>Choose Building</label>                        
-                        		<select class="building_id form-control" name="building_id" required="">
-                        			<option value="">Select Building</option>
-                        			<?php foreach($buildings as $building):?>
-				        				<option value="<?php echo $building['building_id']?>"><?php echo $building['name']?></option>
-				        			<?php endforeach; ?>
-                        		</select>                    
-                        	</div>
-                            <div class="form-group">   
-                                <label>Choose Position</label>                        
-                                <select class="position_id form-control" name="position_id" required="">
-                                    <option value="">Select Position</option>
-                                    <?php foreach($positions as $position):?>
-                                        <option value="<?php echo $position['position_id']?>"><?php echo $position['name']?></option>
-                                    <?php endforeach; ?>
-                                </select>                    
-                            </div>
-                            <div class="form-group m-b-0">
-                                <button type="submit" class="btn btn-inverse btn-custom" name='cmd' value='Save'>Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 </div>

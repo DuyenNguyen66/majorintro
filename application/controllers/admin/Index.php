@@ -9,11 +9,11 @@ class Index extends Base_Controller
 		$this->load->model('editor_model');
 		
 		$this->load->model('position_model');
-		$this->load->model('building_model');
+		$this->load->model('Major_model');
 		$this->load->model('term_model');
 		$this->load->model('student_model');
 		$this->load->model('registration_model');
-		$this->load->model('bill_model');
+		$this->load->model('Group_model');
 	}
 	
 //admin controller
@@ -167,7 +167,7 @@ class Index extends Base_Controller
 		$data['customCss'] = array('assets/css/settings.css');
 		$data['customJs'] = array('assets/js/settings.js', 'assets/app/search.js');
 		$data['parent_id'] = 4;
-		$data['sub_id'] = 0;
+		$data['sub_id'] = 2;
 		$data['group'] = 1;
 		$data['content'] = $content;
 		$this->load->view('admin_main_layout', $data);

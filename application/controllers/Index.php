@@ -8,7 +8,7 @@ class Index extends CI_Controller {
 		$this->load->model('student_model');
 		$this->load->model('Re_Et_model');
 		$this->load->model('floor_model');
-		$this->load->model('building_model');
+		$this->load->model('Major_model');
 		$this->load->model('term_model');
 	}
 

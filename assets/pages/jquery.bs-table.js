@@ -78,7 +78,7 @@ function statusFormatter(value, row) {
 }
 
 
-// Sort Price Column
+// Sort Major Column
 // =================================================================
 function priceSorter(a, b) {
 	a = +a.substring(1); // remove $

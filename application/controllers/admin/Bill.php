@@ -9,7 +9,7 @@ class Bill extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('bill_model');
+		$this->load->model('Group_model');
 		$this->load->model('admin_model');
 		$this->load->model('room_model');
 		$this->load->model('term_model');
@@ -164,7 +164,7 @@ class Bill extends CI_Controller {
 			$building_id = $assignment['building_id'];
 			$rooms = $this->room_model->getRoomsByBuilding($building_id);
 			$bills = $this->bill_model->getRoomBill($building_id);
-			$room_price = $this->price_model->getRoomPrice()['price'];
+			$room_price = $this->price_model->getRoomPrice()['Major'];
 			$cmd = $this->input->post('cmd');
 			if ($cmd != null) {
 				$room_id = $this->input->post('room_id');
@@ -232,35 +232,35 @@ class Bill extends CI_Controller {
 	public function getElecTotalPay($used, $priceList) {
 		$total = 0;
 		if ($used >= 50) {
-			$total += 50 * $priceList[0]['price'];
+			$total += 50 * $priceList[0]['Major'];
 			$used -= 50;
 			if ($used >= 50) {
-				$total += 50 * $priceList[1]['price'];
+				$total += 50 * $priceList[1]['Major'];
 				$used -= 50;
 				if ($used >= 100) {
-					$total += 100 * $priceList[2]['price'];
+					$total += 100 * $priceList[2]['Major'];
 					$used -= 100;
 					if ($used >= 100) {
-						$total += 100 * $priceList[3]['price'];
+						$total += 100 * $priceList[3]['Major'];
 						$used -= 100;
 						if ($used >= 100) {
-							$total += 100 * $priceList[4]['price'];
+							$total += 100 * $priceList[4]['Major'];
 							$used -= 100;
-							$total += $used * $priceList[5]['price'];
+							$total += $used * $priceList[5]['Major'];
 						}else {
-							$total += $used * $priceList[4]['price'];
+							$total += $used * $priceList[4]['Major'];
 						}
 					}else {
-						$total += $used * $priceList[3]['price'];
+						$total += $used * $priceList[3]['Major'];
 					}
 				}else {
-					$total += $used * $priceList[2]['price'];
+					$total += $used * $priceList[2]['Major'];
 				}
 			}else {
-				$total += $used * $priceList[1]['price'];
+				$total += $used * $priceList[1]['Major'];
 			}
 		}else {
-			$total += $used * $priceList[0]['price'];
+			$total += $used * $priceList[0]['Major'];
 		}
 		return $total;
 	}
@@ -268,23 +268,23 @@ class Bill extends CI_Controller {
 	public function getWatTotalPay($used, $priceList) {
 		$total = 0;
 		if($used >= 10) {
-			$total += 10 * $priceList[0]['price'];
+			$total += 10 * $priceList[0]['Major'];
 			$used -= 10;
 			if($used >= 10) {
-				$total += 10 * $priceList[1]['price'];
+				$total += 10 * $priceList[1]['Major'];
 				$used -= 10;
 				if($used >= 10) {
-					$total += 10 * $priceList[2]['price'];
+					$total += 10 * $priceList[2]['Major'];
 					$used -= 10;
-					$total += $used * $priceList[3]['price'];
+					$total += $used * $priceList[3]['Major'];
 				}else {
-					$total += $used * $priceList[2]['price'];
+					$total += $used * $priceList[2]['Major'];
 				}
 			}else {
-				$total += $used * $priceList[1]['price'];
+				$total += $used * $priceList[1]['Major'];
 			}
 		}else {
-			$total += $used * $priceList[0]['price'];
+			$total += $used * $priceList[0]['Major'];
 		}
 		return $total;
 	}
@@ -350,7 +350,7 @@ class Bill extends CI_Controller {
 			echo "Cannot open $filename :( "; die;
 		}
 		$xml = $zip->getFromName('word/document.xml');
-		$xml = str_replace(['student', 'term','paid', 'room', 'build', 'pay', 'price'], [$student, $term, $paid, $room, $build, $pay, $price], $xml);
+		$xml = str_replace(['student', 'term','paid', 'room', 'build', 'pay', 'Major'], [$student, $term, $paid, $room, $build, $pay, $price], $xml);
 		if ($zip->addFromString('word/document.xml', $xml)) { echo 'File written!'; }
 		else { echo 'File not written.  Go back and add write permissions to this folder!'; }
 		$zip->close();

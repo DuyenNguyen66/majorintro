@@ -23,7 +23,7 @@
                             </div>
                             <div class="form-group">                       
                                 <label>Price(đ/m<sup>3</sup>)</label>                        
-                                <input type="text" name='price' required class="form-control" value="<?php echo $price['price']?>"/>
+                                <input type="text" name='price' required class="form-control" value="<?php echo $price['Major']?>"/>
                             </div>
                         </div>
                     </div>

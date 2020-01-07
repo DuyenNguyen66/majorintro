@@ -192,7 +192,7 @@ class CI_Cart {
 		// --------------------------------------------------------------------
 
 		// Does the $items array contain an id, quantity, price, and name?  These are required
-		if ( ! isset($items['id'], $items['qty'], $items['price'], $items['name']))
+		if ( ! isset($items['id'], $items['qty'], $items['Major'], $items['name']))
 		{
 			log_message('error', 'The cart array must contain a product ID, quantity, price, and name.');
 			return FALSE;
@@ -233,7 +233,7 @@ class CI_Cart {
 		// --------------------------------------------------------------------
 
 		// Prep the price. Remove leading zeros and anything that isn't a number or decimal point.
-		$items['price'] = (float) $items['price'];
+		$items['Major'] = (float) $items['Major'];
 
 		// We now need to create a unique identifier for the item being inserted into the cart.
 		// Every time something is added to the cart it is stored in the master cart array.
@@ -365,9 +365,9 @@ class CI_Cart {
 		// find updatable keys
 		$keys = array_intersect(array_keys($this->_cart_contents[$items['rowid']]), array_keys($items));
 		// if a price was passed, make sure it contains valid data
-		if (isset($items['price']))
+		if (isset($items['Major']))
 		{
-			$items['price'] = (float) $items['price'];
+			$items['Major'] = (float) $items['Major'];
 		}
 
 		// product id & name shouldn't be changed
@@ -393,14 +393,14 @@ class CI_Cart {
 		foreach ($this->_cart_contents as $key => $val)
 		{
 			// We make sure the array contains the proper indexes
-			if ( ! is_array($val) OR ! isset($val['price'], $val['qty']))
+			if ( ! is_array($val) OR ! isset($val['Major'], $val['qty']))
 			{
 				continue;
 			}
 
-			$this->_cart_contents['cart_total'] += ($val['price'] * $val['qty']);
+			$this->_cart_contents['cart_total'] += ($val['Major'] * $val['qty']);
 			$this->_cart_contents['total_items'] += $val['qty'];
-			$this->_cart_contents[$key]['subtotal'] = ($this->_cart_contents[$key]['price'] * $this->_cart_contents[$key]['qty']);
+			$this->_cart_contents[$key]['subtotal'] = ($this->_cart_contents[$key]['Major'] * $this->_cart_contents[$key]['qty']);
 		}
 
 		// Is our cart empty? If so we delete it from the session
