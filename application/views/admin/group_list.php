@@ -1,5 +1,5 @@
 <div class="col-xs-12">
-    <h3 class="m-t-0 m-b-20 header-title">Chuyên ngành</h3>
+    <h3 class="m-t-0 m-b-20 header-title">Nhóm ngành</h3>
 </div>
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#list">Danh sách</a></li>
@@ -20,25 +20,23 @@
                         <tr>
                             <th>STT</th>
                             <th>Mã ngành</th>
-                            <th>Tên ngành</th>
-                            <th>Nhóm ngành</th>
+                            <th>Tên nhóm ngành</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
-                        if (isset($majors) && is_array($majors))
+                        if (isset($major_group) && is_array($major_group))
                         {
-                            foreach ($majors as $key => $row):
+                            foreach ($major_group as $key => $row):
                                 ?>
                                 <tr>
-                                    <td><?php echo $row['major_id'] ?></td>
-                                    <td><?php echo $row['major_code'] ?></td>
-                                    <td><?php echo $row['major_name']?></td>
+                                    <td><?php echo $row['group_id'] ?></td>
+                                    <td><?php echo $row['group_code'] ?></td>
                                     <td><?php echo $row['group_name']?></td>
                                     <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                            <a href="<?php echo base_url('major/edit/' . $row['major_id'])?>">Sửa</a>
+                                            <a href="<?php echo base_url('group/edit/' . $row['group_id'])?>">Sửa</a>
                                         </button>
                                     </td>
                                 </tr>

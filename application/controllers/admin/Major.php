@@ -40,12 +40,12 @@ class Major extends CI_Controller {
             $params['status'] = 1;
             
             $check = $this->major_model->checkMajorExist($params['major_code'], $params['major_name']);
-            if ($account != null) {
+            if ($check != null) {
                 $this->session->set_flashdata('error', 'Tên ngành đã tồn tại.');
                 redirect('edit-major');
             }else {
                 $this->major_model->add($params);
-                $this->session->set_flashdata('success', 'Sửa thành công.');
+                $this->session->set_flashdata('success', 'Thêm thành công.');
                 redirect('list-major');
             }
         }
@@ -76,7 +76,7 @@ class Major extends CI_Controller {
             $params['status'] = 1;
             
             $check = $this->major_model->checkMajorExist($params['major_code'], $params['major_name']);
-            if ($account != null) {
+            if ($check != null) {
                 $this->session->set_flashdata('error', 'Tên ngành đã tồn tại.');
                 redirect('edit-major');
             }else {
