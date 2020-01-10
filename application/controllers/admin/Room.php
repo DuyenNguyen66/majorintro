@@ -5,7 +5,7 @@ class Room extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('room_model');
-		$this->load->model('floor_model');
+		$this->load->model('News_model');
 		$this->load->model('Major_model');
 		$this->load->model('student_model');
 		$this->load->model('admin_model');

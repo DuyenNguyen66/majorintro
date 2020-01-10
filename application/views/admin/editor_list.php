@@ -44,15 +44,15 @@
                                         <td><?php echo $row['status'] == 0 ? '<a class="btn btn-warning btn-xs">Chưa kích hoạt</a>' : '<a class="btn btn-success btn-xs">Đã kích hoạt</a>'?></td>
                 						<td>
                                             <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                                <a href="<?php echo base_url('editor/edit/' . $row['editor_id'])?>">Sửa</a>
+                                                <a href="<?php echo base_url('editor/edit/' . $row['editor_id'])?>"><i class="fa fa-edit"></i></a>
                                             </button>
                                             <?php if($row['status'] == 1):?>
                                             <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                                <a href="<?php echo base_url('editor/disable/' . $row['editor_id'])?>">Vô hiệu hóa</a>
+                                                <a href="<?php echo base_url('editor/disable/' . $row['editor_id'])?>"><i class="fa fa-eye-slash"></i></a>
                                             </button>
                                             <?php else:?>
                                             <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                                <a href="<?php echo base_url('editor/enable/' . $row['editor_id'])?>">Kích hoạt</a>
+                                                <a href="<?php echo base_url('editor/enable/' . $row['editor_id'])?>"><i class="fa fa-eye"></i></a>
                                             </button>
                                             <?php endif;?>
                 						</td>

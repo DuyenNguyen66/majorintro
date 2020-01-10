@@ -93,7 +93,7 @@
 						</li>
 						<li class="has_sub">
 							<a href="#" class="waves-effect<?php echo isset($parent_id) && $parent_id == 2 ? ' active' : ''; ?>">
-                                <i class="fa fa-user-graduate"></i><span>Biên tập viên</span>
+                                <i class="fa fa-users"></i> <span>Biên tập viên</span>
                             </a>
 							<ul class="list-unstyled">
 								<li <?php echo($sub_id == 21 ? 'class="active"' : ''); ?>>
@@ -105,23 +105,14 @@
 								
 							</ul>
 						</li>
-                        <li class="has_sub">
-                            <a href="#" class="waves-effect<?php echo isset($parent_id) && $parent_id == 3 ? ' active' : ''; ?>">
-                                <i class="fa fa-user-graduate"></i><span>Bài viết</span>
+                        <li>
+                            <a href="<?php echo base_url('list-news-a'); ?>" class="waves-effect<?php echo isset($parent_id) && $parent_id == 3 ? ' active' : ''; ?>">
+                                <i class="fa fa-newspaper"></i> <span>Bài viết</span>
                             </a>
-                            <ul class="list-unstyled">
-                                <li <?php echo($sub_id == 31 ? 'class="active"' : ''); ?>>
-                                    <a href="<?php echo base_url('add-news-a'); ?>"><span>Thêm mới</span></a>
-                                </li>
-                                <li <?php echo($sub_id == 32 ? 'class="active"' : ''); ?>>
-                                    <a href="<?php echo base_url('list-news-a'); ?>">Danh sách</a>
-                                </li>
-
-                            </ul>
                         </li>
                         <li class="has_sub">
                             <a href="#" class="waves-effect<?php echo isset($parent_id) && $parent_id == 4 ? ' active' : ''; ?>">
-                                <i class="fa fa-user-graduate"></i><span>Nhóm ngành</span>
+                                <i class="fa fa-book"></i> <span>Nhóm ngành</span>
                             </a>
                             <ul class="list-unstyled">
                                 <li <?php echo($sub_id == 41 ? 'class="active"' : ''); ?>>
@@ -135,7 +126,7 @@
                         </li>
                         <li class="has_sub">
                             <a href="#" class="waves-effect<?php echo isset($parent_id) && $parent_id == 5 ? ' active' : ''; ?>">
-                                <i class="fa fa-user-graduate"></i><span>Chuyên ngành</span>
+                                <i class="fa fa-pencil-ruler"></i> <span>Chuyên ngành</span>
                             </a>
                             <ul class="list-unstyled">
                                 <li <?php echo($sub_id == 51 ? 'class="active"' : ''); ?>>

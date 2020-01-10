@@ -2267,7 +2267,7 @@ function BasicView(element, calendar, viewName) {
 
 
 
-	/* HTML Building
+	/* HTML News
 	-----------------------------------------------------------*/
 
 

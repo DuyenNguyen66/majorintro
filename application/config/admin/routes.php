@@ -9,7 +9,6 @@ $route['register'] = 'index/register';
 
 $route['add-editor'] = 'editor/add';
 $route['list-editor'] = 'editor/index';
-$route['add-news-a'] = 'news/add';
 $route['list-news-a'] = 'news/getNews';
 $route['add-group'] = 'group/add';
 $route['list-group'] = 'group/index';

@@ -212,7 +212,7 @@ class Index extends Base_Controller
 		$building = $this->building_model->getById($assignment['building_id']); 
 		$params = array(
 			'term' => $term,
-			'building' => $building,
+			'News' => $building,
 			'admin' => $admin,
 			'totalStudents' => $totalStudents,
 			'totalForms' => $totalForms,

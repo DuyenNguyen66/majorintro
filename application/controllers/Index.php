@@ -7,7 +7,7 @@ class Index extends CI_Controller {
 		parent::__construct();
 		$this->load->model('student_model');
 		$this->load->model('Re_Et_model');
-		$this->load->model('floor_model');
+		$this->load->model('News_model');
 		$this->load->model('Major_model');
 		$this->load->model('term_model');
 	}

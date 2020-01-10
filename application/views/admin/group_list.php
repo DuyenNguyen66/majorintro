@@ -36,7 +36,7 @@
                                     <td><?php echo $row['group_name']?></td>
                                     <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                            <a href="<?php echo base_url('group/edit/' . $row['group_id'])?>">Sửa</a>
+                                            <a href="<?php echo base_url('group/edit/' . $row['group_id'])?>"><i class="fa fa-edit"></i></a>
                                         </button>
                                     </td>
                                 </tr>
