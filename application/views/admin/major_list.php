@@ -22,6 +22,8 @@
                             <th>Mã ngành</th>
                             <th>Tên ngành</th>
                             <th>Nhóm ngành</th>
+                            <th>Thời gian đào tạo</th>
+                            <th>Bằng tốt nghiệp</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -36,6 +38,8 @@
                                     <td><?php echo $row['major_code'] ?></td>
                                     <td><?php echo $row['major_name']?></td>
                                     <td><?php echo $row['group_name']?></td>
+                                    <td><?php echo $row['training_time']?> năm</td>
+                                    <td><?php echo $row['degree']?></td>
                                     <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">
                                             <a href="<?php echo base_url('major/edit/' . $row['major_id'])?>"><i class="fa fa-edit"></i></a>

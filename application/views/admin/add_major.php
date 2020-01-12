@@ -24,6 +24,14 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>Thời gian đào tạo</label>
+                            <input type="text" name='training_time' required class="form-control" placeholder="Enter"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Bằng tốt nghiệp</label>
+                            <input type="text" name='degree' required class="form-control" placeholder="Enter"/>
+                        </div>
                         <div class="form-group m-b-0">
                             <button type="submit" class="btn btn-inverse btn-custom" name='cmd' value='Save'>Save</button>
                         </div>

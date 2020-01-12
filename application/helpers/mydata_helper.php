@@ -272,15 +272,16 @@ function media_url($mediaUri, $default = 'assets/images/placeholder.png') {
 }
 
 function media_thumbnail($mediaUri, $size = 100, $default = 'assets/images/placeholder.png') {
-	if (startsWith($mediaUri, 'http')) {
-		return $mediaUri;
-	}
+//	if (startsWith($mediaUri, 'http')) {
+//		return $mediaUri;
+//	}
 	if (empty($mediaUri) || !file_exists($mediaUri)) {
 		$mediaUri = $default;
-	}
-
-	$pathEncoded = str_replace('=', '', base64_encode($mediaUri));
-	return base_url('photo/thumbnail/' . $pathEncoded . '?size=' . ($size * 2));
+    }
+    return base_url($mediaUri);
+    
+    //	$pathEncoded = str_replace('=', '', base64_encode($mediaUri));
+//	return base_url('photo/thumbnail/' . $pathEncoded . '?size=' . ($size * 2));
 }
 
 function make_url($url = '', $query_data = []) {

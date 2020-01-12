@@ -32,7 +32,7 @@ class Editor_model extends CI_Model
     public function getById($id) {
         $this->db->select('e.*, m.major_name');
         $this->db->from('editor e');
-        $this->db->join('major m', 'e.major_id = m.major_id');
+        $this->db->join('major m', 'e.major_id = m.major_id', 'left');
         $this->db->where('e.editor_id', $id);
         $query = $this->db->get();
         return $query->result_array()[0];

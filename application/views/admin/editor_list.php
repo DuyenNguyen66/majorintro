@@ -22,7 +22,8 @@
                 				<th>ID</th>
                 				<th>Họ và tên</th>
                 				<th>Email</th>
-                				<th>Nhóm ngành</th>
+                				<th>Số điện thoại</th>
+                				<th>Ngành đào tạo</th>
                 				<th>Ngày tạo</th>
                                 <th>Trạng thái</th>
                 				<th></th>
@@ -35,10 +36,11 @@
                 				foreach ($editors as $key => $row):
                 					?>
                 					<tr>
-                						<td><img style="max-width: 70px;max-height:70px;border-radius:5px" src="<?= $row['avatar']?>"/></td>
+                						<td><img style="max-width: 70px;max-height:70px;border-radius:5px" src="<?= media_thumbnail($row['avatar'])?>"/></td>
                 						<td><?php echo $row['editor_id'] ?></td>
                 						<td><?php echo $row['full_name']?></td>
                 						<td><?php echo $row['email']?></td>
+                						<td><?php echo $row['phone']?></td>
                                         <td><?php echo ($row['major_name'] != null) ? $row['major_name'] : 'N/a' ?></td>
                 						<td><?php echo date('d/m/Y h:iA', $row['created_at'])?></td>
                                         <td><?php echo $row['status'] == 0 ? '<a class="btn btn-warning btn-xs">Chưa kích hoạt</a>' : '<a class="btn btn-success btn-xs">Đã kích hoạt</a>'?></td>

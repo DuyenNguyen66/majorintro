@@ -75,7 +75,7 @@
 			</div>
 			<div class="row" style="margin:2rem 0;">
 				<label class="col-md-3"></label>
-				<img src="<?php echo base_url($admin['avatar'])?>" alt="avatar" class="img-thumbnail" width="100" height="100">
+				<img src="<?php echo media_thumbnail($admin['avatar'])?>" alt="avatar" class="img-thumbnail" width="100" height="100">
 			</div>
 		</div>
 	</div>

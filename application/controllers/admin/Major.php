@@ -37,6 +37,8 @@ class Major extends CI_Controller {
             $params['major_code'] = $this->input->post('major_code');
             $params['major_name'] = $this->input->post('major_name');
             $params['group_id'] = $this->input->post('group_id');
+            $params['training_time'] = $this->input->post('training_time');
+            $params['degree'] = $this->input->post('degree');
             $params['status'] = 1;
             
             $check = $this->major_model->checkMajorExist($params['major_code'], $params['major_name']);
@@ -73,17 +75,13 @@ class Major extends CI_Controller {
             $params['major_code'] = $this->input->post('major_code');
             $params['major_name'] = $this->input->post('major_name');
             $params['group_id'] = $this->input->post('group_id');
+            $params['training_time'] = (float)$this->input->post('training_time');
+            $params['degree'] = $this->input->post('degree');
             $params['status'] = 1;
-            
-            $check = $this->major_model->checkMajorExist($params['major_code'], $params['major_name']);
-            if ($check != null) {
-                $this->session->set_flashdata('error', 'Tên ngành đã tồn tại.');
-                redirect('edit-major');
-            }else {
-                $this->major_model->update($major_id, $params);
-                $this->session->set_flashdata('success', 'Sửa thành công.');
-                redirect('list-major');
-            }
+    
+            $this->major_model->update($major_id, $params);
+            $this->session->set_flashdata('success', 'Sửa thành công.');
+            redirect('list-major');
         }
         $layoutParams = array (
             'major' => $major,

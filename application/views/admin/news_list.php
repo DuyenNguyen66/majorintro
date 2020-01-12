@@ -20,10 +20,10 @@
                             <th>STT</th>
                             <th>Ảnh bìa</th>
                             <th>Tiêu đề</th>
-                            <th>Ngành học</th>
-                            <th>Biên tập viên</th>
-                            <th>Ngày tạo</th>
                             <th>Trạng thái</th>
+                            <th>Ngành học</th>
+                            <th>Tác giả</th>
+                            <th>Lượt xem</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -37,10 +37,18 @@
                                     <td><?php echo $row['news_id'] ?></td>
                                     <td><img style="max-width: 70px;max-height:70px;border-radius:5px" src="<?= $row['image']?>"/></td>
                                     <td><?php echo $row['title'] ?></td>
+                                    <td>
+                                        <?php if($row['status'] == 0): ?>
+                                        <a class="btn btn-danger btn-xs">Ẩn</a>
+                                        <?php elseif($row['status'] == 1): ?>
+                                        <a class="btn btn-warning btn-xs">Chờ phê duyệt</a>
+                                        <?php else: ?>
+                                        <a class="btn btn-success btn-xs">Xuất bản</a>
+                                        <?php endif; ?>
+                                </td>
                                     <td><?php echo $row['major_name'] ?></td>
                                     <td><?php echo $row['full_name'] ?></td>
-                                    <td><?php echo date('d/m/Y', $row['created_at'])?></td>
-                                    <td><?php echo $row['status'] == 0 ? '<a class="btn btn-warning btn-xs">Đã ẩn</a>' : '<a class="btn btn-success btn-xs">Hiển thị</a>'?></td>
+                                    <td>000</td>
                                     <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">
                                             <a href="<?php echo base_url('news/view/' . $row['news_id'])?>"><i class="fa fa-search-plus"></i></a>

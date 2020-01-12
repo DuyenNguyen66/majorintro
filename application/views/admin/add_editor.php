@@ -16,6 +16,10 @@
                                 <input type="text" name='email' required class="form-control" placeholder="Enter" />
                             </div>
                             <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <input type="text" name='phone' required class="form-control" placeholder="Enter" />
+                            </div>
+                            <div class="form-group">
                                 <label>Mật khẩu mặc định</label>
                                 <input type="password" name='password' required class="form-control" placeholder="Enter" />
                             </div>
