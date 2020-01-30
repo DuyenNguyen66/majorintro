@@ -8,7 +8,7 @@ $route['logout'] = 'index/logout';
 $route['register'] = 'index/register';
 
 $route['add-editor'] = 'editor/add';
-$route['list-editor'] = 'editor/index';
+$route['list-editor'] = 'editor/getList';
 $route['list-news-a'] = 'news/getNews';
 $route['add-group'] = 'group/add';
 $route['list-group'] = 'group/index';

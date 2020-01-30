@@ -9,7 +9,7 @@ class Index extends Base_Controller
 		$this->load->model('editor_model');
 		
 		$this->load->model('position_model');
-		$this->load->model('Major_model');
+		$this->load->model('major_model');
 		$this->load->model('term_model');
 		$this->load->model('student_model');
 		$this->load->model('registration_model');
@@ -59,7 +59,7 @@ class Index extends Base_Controller
                     $this->session->set_userdata('editor', array('email' => $editor_account['email'], 'editor_id' => $editor_account['editor_id']));
                     $this->redirect('dashboard-e');
                 } else {
-                    $this->load->view('admin/login', array('error'=>'Account does not exist.'));
+                    $this->load->view('admin/login', array('error' => 'Account does not existt.'));
                 }
 			}
 		} else {

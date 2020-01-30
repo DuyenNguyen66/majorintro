@@ -141,6 +141,11 @@
 						
 					<!-- Editor -->
 					<?php elseif(isset($group) && $group == 2):?>
+                        <li>
+                            <a href="<?php echo base_url('dashboard-e'); ?>" class="waves-effect<?php echo isset($parent_id) && $parent_id == 7 ? ' active' : ''; ?>">
+                                <i class="fa fa-home"></i> <span>Trang chủ</span>
+                            </a>
+                        </li>
                         <li class="has_sub">
                             <a href="#" class="waves-effect<?php echo isset($parent_id) && $parent_id == 5 ? ' active' : ''; ?>">
                                 <i class="fa fa-user-graduate"></i><span>Bài viết</span>

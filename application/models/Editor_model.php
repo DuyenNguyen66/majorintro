@@ -12,7 +12,7 @@ class Editor_model extends CI_Model
     
     public function checkAccount($email, $password)
     {
-        $sql = "select * from editor where email = '$email' and password='$password' and status = 1";
+        $sql = "select * from editor where email = '$email' and password='$password' ";
         $result = $this->db->query($sql);
         if ($result->num_rows() > 0) {
             return $result->result_array()[0];

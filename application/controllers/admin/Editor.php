@@ -12,22 +12,25 @@ class Editor extends Base_Controller
     
     public function index()
     {
-        $admin = $this->session->userdata('admin');
-        if ($admin == null) {
+        $editor = $this->session->userdata('editor');
+        if ($editor == null) {
             redirect(base_url('login'));
         }
-        $editors = $this->editor_model->getAll();
+        $account = $this->editor_model->getById($editor['editor_id']);
+        if($account['status'] == 0) {
+            $this->session->set_flashdata('acc_mess', 'Thay đổi mật khẩu để kích hoạt tài khoản');
+        }
         $layoutParams = array(
-            'editors' => $editors
+            'account' => $account
         );
-        $content = $this->load->view('admin/editor_list', $layoutParams, true);
+        $content = $this->load->view('editor/dashboard', $layoutParams, true);
         
         $data = array();
-        $data['customCss'] = array('assets/css/settings.css');
-        $data['customJs'] = array('assets/js/settings.js', 'assets/app/search.js');
-        $data['parent_id'] = 2;
-        $data['sub_id'] = 22;
-        $data['group'] = 1;
+        $data['customCss'] = array('assets/css/settings.css', 'assets/css/fullcalendar.css', 'assets/css/fullcalendar.print.css');
+        $data['customJs'] = array('assets/js/jquery-ui.custom.min.js', 'assets/js/fullcalendar.js', 'assets/js/student.js');
+        $data['parent_id'] = 7;
+        $data['sub_id'] = 0;
+        $data['group'] = 2;
         $data['content'] = $content;
         $this->load->view('admin_main_layout', $data);
     }
@@ -42,13 +45,7 @@ class Editor extends Base_Controller
             $params['email'] = $this->input->post('email');
             $params['password'] = md5($this->input->post('password'));
             $params['phone'] = $this->input->post('phone');
-            $this->load->model('file_model');
-            $image = isset($_FILES['image']) ? $_FILES['image'] : null;
-            if ($image != null && $image['error'] == 0) {
-                $path = $this->file_model->createFileName($image, 'media/avatar/', 'avatar');
-                $this->file_model->saveFile($image, $path);
-                $params['avatar'] = $path;
-            }
+
             $params['major_id'] = $this->input->post('major_id');
             $params['created_at'] = time();
             
@@ -90,7 +87,7 @@ class Editor extends Base_Controller
             $params['phone'] = $this->input->post('phone');
             
             $this->editor_model->updateAccount($editor_id, $params);
-            $this->session->set_flashdata('success', 'Tạo tài khoản thành công.');
+            $this->session->set_flashdata('success', 'Sửa tài khoản thành công.');
             redirect('list-editor');
         }
         $layoutParams = array(
@@ -105,6 +102,67 @@ class Editor extends Base_Controller
         $data['parent_id'] = 2;
         $data['sub_id'] = 22;
         $data['group'] = 1;
+        $data['content'] = $content;
+        $this->load->view('admin_main_layout', $data);
+    }
+    
+    public function getList()
+    {
+        $editor = $this->session->userdata('admin');
+        if ($editor == null) {
+            redirect(base_url('login'));
+        }
+        $editors = $this->editor_model->getAll();
+        $layoutParams = array(
+            'editors' => $editors
+        );
+        $content = $this->load->view('admin/editor_list', $layoutParams, true);
+        
+        $data = array();
+        $data['customCss'] = array('assets/css/settings.css');
+        $data['customJs'] = array('assets/js/jquery-ui.custom.min.js', 'assets/js/student.js');
+        $data['parent_id'] = 2;
+        $data['sub_id'] = 22;
+        $data['group'] = 1;
+        $data['content'] = $content;
+        $this->load->view('admin_main_layout', $data);
+    }
+    
+    public function getAccount() {
+        $editor = $this->session->userdata('editor');
+        if ($editor == null) {
+            redirect(base_url('login'));
+        }
+        $editor = $this->editor_model->getById($editor['editor_id']);
+        
+        $cmd = $this->input->post("cmd");
+        if ($cmd != '') {
+            $params['full_name'] = $this->input->post('name');
+            $params['phone'] = $this->input->post('phone');
+            $params['password'] = md5($this->input->post('password'));
+            $params['status'] = 1;
+            $this->load->model('file_model');
+            $image = isset($_FILES['image']) ? $_FILES['image'] : null;
+            if ($image != null && $image['error'] == 0) {
+                $path = $this->file_model->createFileName($image, 'media/avatar/', 'avatar');
+                $this->file_model->saveFile($image, $path);
+                $params['avatar'] = $path;
+            }
+            $this->editor_model->updateAccount($editor['editor_id'], $params);
+            $this->session->set_userdata('editor', array('email' => $editor['email'], 'editor_id' => $editor['editor_id']));
+            redirect('dashboard-e');
+        }
+        $layoutParams = array(
+            'editor' => $editor,
+        );
+        $content = $this->load->view('editor/edit_account', $layoutParams, true);
+    
+        $data = array();
+        $data['customCss'] = array('assets/css/settings.css');
+        $data['customJs'] = array('assets/js/settings.js', 'assets/app/search.js');
+        $data['parent_id'] = 6;
+        $data['sub_id'] = 0;
+        $data['group'] = 2;
         $data['content'] = $content;
         $this->load->view('admin_main_layout', $data);
     }

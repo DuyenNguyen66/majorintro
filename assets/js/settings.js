@@ -55,6 +55,21 @@ $('#confirm_btn').click(function(){
 	});
 })
 
+//Change password
+$('#re_password').keyup(function () {
+	var pass = $('#password').val();
+	var re_pass = $('#re_password').val();
+	if (re_pass != '' && pass != re_pass) {
+		$('#icon_check').html('<i class="fa fa-times" style="color: red"></i>');
+		$('.btn_save').html('<button type="submit" class="btn btn-inverse btn-custom" name=\'cmd\' value=\'Save\' disabled >Save\n' + '</button>')
+	} else if (pass != '' && pass == re_pass) {
+		$('#icon_check').html('<i class="fa fa-check" style="color: green;"></i>');
+		$('.btn_save').html('<button type="submit" class="btn btn-inverse btn-custom" name=\'cmd\' value=\'Save\'>Save\n' + '</button>')
+	} else {
+		$('#icon_check').html('')
+	}
+});
+
 
 
 

@@ -121,9 +121,9 @@ button a {
     float: right;
     margin-bottom: 1em;
 }
-/*.card-box {
-    margin-top: 10px;
-}*/
+.card-box {
+    border:none;
+}
 
 .modal-dialog {
     margin-top: 15em;

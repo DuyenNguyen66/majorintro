@@ -20,7 +20,7 @@
                             <input type="text" name='phone' required class="form-control" placeholder="Enter" value="<?php echo $editor['phone']?>"/>
                         </div>
                         <div class="form-group">
-                            <label>Nhóm ngành</label>
+                            <label>Chuyên ngành quản lý</label>
                             <select class="building_id form-control" name="major_id" required="">
                                 <option value="<?php echo $editor['major_id']?>"><?php echo $editor['major_name']?></option>
                                 <?php foreach($majors as $major):?>

@@ -24,9 +24,9 @@
                                 <input type="password" name='password' required class="form-control" placeholder="Enter" />
                             </div>
                         	<div class="form-group">
-                        		<label>Nhóm ngành</label>
+                        		<label>Chuyên ngành quản lý</label>
                         		<select class="building_id form-control" name="major_id" required="">
-                        			<option value="">Chọn nhóm ngành</option>
+                        			<option value="">Chọn chuyên ngành</option>
                         			<?php foreach($majors as $major):?>
 				        				<option value="<?php echo $major['major_id']?>"><?php echo $major['major_name']?></option>
 				        			<?php endforeach; ?>
