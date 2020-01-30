@@ -8,10 +8,12 @@ $route['logout'] = 'index/logout';
 $route['register'] = 'index/register';
 
 $route['add-editor'] = 'editor/add';
-$route['list-editor'] = 'editor/index';
-$route['add-news-a'] = 'news/add';
+$route['list-editor'] = 'editor/getList';
 $route['list-news-a'] = 'news/getNews';
-$route['major'] = 'major/index';
+$route['add-group'] = 'group/add';
+$route['list-group'] = 'group/index';
+$route['add-major'] = 'major/add';
+$route['list-major'] = 'major/index';
 
 //Editor
 $route['dashboard-e'] = 'editor/index';

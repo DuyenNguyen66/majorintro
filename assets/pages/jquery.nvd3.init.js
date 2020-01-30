@@ -93,7 +93,7 @@
         }).y(function(d) {
             return d.value;
         }).staggerLabels(true).tooltips(false).showValues(true).duration(250);
-        barChart.yAxis.axisLabel('Price change in USD');
+        barChart.yAxis.axisLabel('Major change in USD');
         d3.select('.bar-chart svg').datum(historicalBarChart).call(barChart);
         nv.utils.windowResize(barChart.update);
         return barChart;

@@ -1,18 +1,19 @@
 <?php
 require_once APPPATH . '/core/Base_Controller.php';
 
-class Index extends Base_Controller {
+class Index extends Base_Controller
+{
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('admin_model');		
 		$this->load->model('editor_model');
 		
 		$this->load->model('position_model');
-		$this->load->model('building_model');
+		$this->load->model('major_model');
 		$this->load->model('term_model');
 		$this->load->model('student_model');
 		$this->load->model('registration_model');
-		$this->load->model('bill_model');
+		$this->load->model('Group_model');
 	}
 	
 //admin controller
@@ -58,7 +59,7 @@ class Index extends Base_Controller {
                     $this->session->set_userdata('editor', array('email' => $editor_account['email'], 'editor_id' => $editor_account['editor_id']));
                     $this->redirect('dashboard-e');
                 } else {
-                    $this->load->view('admin/login', array('error'=>'Account does not exist.'));
+                    $this->load->view('admin/login', array('error' => 'Account does not existt.'));
                 }
 			}
 		} else {
@@ -166,7 +167,7 @@ class Index extends Base_Controller {
 		$data['customCss'] = array('assets/css/settings.css');
 		$data['customJs'] = array('assets/js/settings.js', 'assets/app/search.js');
 		$data['parent_id'] = 4;
-		$data['sub_id'] = 0;
+		$data['sub_id'] = 2;
 		$data['group'] = 1;
 		$data['content'] = $content;
 		$this->load->view('admin_main_layout', $data);
@@ -211,7 +212,7 @@ class Index extends Base_Controller {
 		$building = $this->building_model->getById($assignment['building_id']); 
 		$params = array(
 			'term' => $term,
-			'building' => $building,
+			'News' => $building,
 			'admin' => $admin,
 			'totalStudents' => $totalStudents,
 			'totalForms' => $totalForms,

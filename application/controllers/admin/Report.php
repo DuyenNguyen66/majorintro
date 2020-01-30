@@ -8,7 +8,7 @@ class Report extends CI_Controller {
 		$this->load->model('admin_model');
 		$this->load->model('term_model');
 		$this->load->model('report_model');
-		$this->load->model('bill_model');
+		$this->load->model('Group_model');
 		$this->load->library('phpexcel/classes/phpexcel');
 	}
 
@@ -151,7 +151,7 @@ class Report extends CI_Controller {
 		$excel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
 		$excel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
 
-		$excel->getActiveSheet()->setCellValue('A1', 'BUILDING');
+		$excel->getActiveSheet()->setCellValue('A1', 'News');
 		$excel->getActiveSheet()->setCellValue('B1', 'PAID');
 		$excel->getActiveSheet()->setCellValue('C1', 'NOT PAID');
 		$excel->getActiveSheet()->setCellValue('D1', 'EXPECTED TOTAL');

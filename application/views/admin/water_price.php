@@ -28,7 +28,7 @@
                 					<tr>
                                         <td><?php echo $row['name']?></td>
                                         <td><?php echo 'Cho ' . $row['description']?></td>
-                                        <td><?php echo number_format($row['price'])?></td>
+                                        <td><?php echo number_format($row['Major'])?></td>
                                         <td>
                                         	<button type="button" class="btn btn-inverse btn-custom btn-xs">
                                         		<a href="<?php echo base_url('price/editWater/' . $row['price_id'])?>">Edit</a>

@@ -29,7 +29,6 @@ class   Admin_model extends CI_Model {
 		}
 	}
 
-
 	public function register($params) {
 		$this->db->insert($this->table, $params);
 	}

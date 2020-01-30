@@ -7,7 +7,7 @@ class Bill extends CI_Controller {
 		parent::__construct();
 		$this->load->model('term_model');
 		$this->load->model('room_model');
-		$this->load->model('bill_model');
+		$this->load->model('Group_model');
 		$this->load->model('student_model');
 	}
 

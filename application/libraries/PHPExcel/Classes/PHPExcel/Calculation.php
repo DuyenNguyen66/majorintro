@@ -1556,7 +1556,7 @@ class PHPExcel_Calculation
             'functionCall' => 'PHPExcel_Calculation_Financial::PPMT',
             'argumentCount' => '4-6'
         ),
-        'PRICE' => array(
+        'Major' => array(
             'category' => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
             'functionCall' => 'PHPExcel_Calculation_Financial::PRICE',
             'argumentCount' => '6,7'
