@@ -140,6 +140,7 @@ class Editor extends Base_Controller
             $params['full_name'] = $this->input->post('name');
             $params['phone'] = $this->input->post('phone');
             $params['password'] = md5($this->input->post('password'));
+            $old_password = md5($this->input->post('old_password'));
             $params['status'] = 1;
             $this->load->model('file_model');
             $image = isset($_FILES['image']) ? $_FILES['image'] : null;
@@ -148,9 +149,15 @@ class Editor extends Base_Controller
                 $this->file_model->saveFile($image, $path);
                 $params['avatar'] = $path;
             }
-            $this->editor_model->updateAccount($editor['editor_id'], $params);
-            $this->session->set_userdata('editor', array('email' => $editor['email'], 'editor_id' => $editor['editor_id']));
-            redirect('dashboard-e');
+            $check_pass = $this->editor_model->checkPass($editor['editor_id'], $old_password);
+            if($check_pass != null) {
+                $this->editor_model->updateAccount($editor['editor_id'], $params);
+                $this->session->set_userdata('editor', array('email' => $editor['email'], 'editor_id' => $editor['editor_id']));
+                redirect('dashboard-e');
+            }else {
+                $this->session->set_flashdata('check_pass_err', 'Mật khẩu cũ không chính xác');
+                redirect('account');
+            }
         }
         $layoutParams = array(
             'editor' => $editor,
@@ -184,4 +191,5 @@ class Editor extends Base_Controller
         $this->editor_model->updateAccount($editor_id, $params);
         redirect('list-editor');
     }
+    
 }

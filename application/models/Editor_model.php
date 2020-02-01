@@ -57,4 +57,11 @@ class Editor_model extends CI_Model
         }
     }
     
+    public function checkPass($editor_id, $password) {
+        $this->db->where($this->id_name, $editor_id);
+        $this->db->where('password', $password);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
+    
 }
