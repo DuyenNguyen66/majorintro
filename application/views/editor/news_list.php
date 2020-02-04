@@ -47,15 +47,15 @@
                                     <td>000</td>
                                     <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                            <a href="<?php echo base_url('news/view/' . $row['news_id'])?>"><i class="fa fa-search-plus"></i></a>
+                                            <a href="<?php echo base_url('news/edit/' . $row['news_id'])?>"><i class="fa fa-edit"></i></a>
                                         </button>
-                                        <?php if($row['status'] == 0): ?>
+                                        <?php if($row['status'] == 1): ?>
                                             <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                                <a href="<?php echo base_url('news/enable/' . $row['news_id'])?>"><i class="fa fa-eye"></i></a>
+                                                <a href="<?php echo base_url('news/disable/' . $row['news_id'])?>"><i class="fa fa-eye-slash"></i></a>
                                             </button>
                                         <?php else: ?>
                                             <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                                <a href="<?php echo base_url('news/disable/' . $row['news_id'])?>"><i class="fa fa-eye-slash"></i></a>
+                                                <a href="<?php echo base_url('news/enable/' . $row['news_id'])?>"><i class="fa fa-eye"></i></a>
                                             </button>
                                         <?php endif; ?>
                                     </td>
