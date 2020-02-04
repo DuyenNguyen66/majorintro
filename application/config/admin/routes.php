@@ -18,5 +18,5 @@ $route['list-major'] = 'major/index';
 //Editor
 $route['dashboard-e'] = 'editor/index';
 $route['add-news'] = 'news/add';
-$route['list-news'] = 'news/getNews';
+$route['list-news'] = 'news/index';
 $route['account'] = 'editor/getAccount';

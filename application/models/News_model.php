@@ -26,5 +26,11 @@ class News_model extends CI_Model {
 		$this->db->where($this->id_name, $id);
 		$this->db->update($this->table, $params);
 	}
+	
+	public function getNewsByEditor($editor_id) {
+	    $this->db->where('editor_id', $editor_id);
+	    $query = $this->db->get($this->table);
+	    return $query->result_array();
+    }
 
 }

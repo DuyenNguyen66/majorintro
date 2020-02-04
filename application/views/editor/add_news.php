@@ -36,10 +36,15 @@
                             <input type="file" accept="image/*" name="image" id="imagePhoto"/>
                         </div>
                     </div>
-                </div>
-                <!--Content edit-->
-                <div class="form-group m-b-0">
-                        <button type="submit" class="btn btn-inverse btn-custom" name='cmd' value='Save'>Save</button>
+                    <!--Content edit-->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Nội dung</label>
+                            <textarea name='content' id="edit_frame" required class="form-control" placeholder="Enter" data-sample-short></textarea>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <button type="submit" class="btn btn-inverse btn-custom" name='cmd' value='Save'>Save</button>
+                        </div>
                     </div>
                 </div>
             </div>

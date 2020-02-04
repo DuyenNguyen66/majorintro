@@ -14,15 +14,13 @@
                             <?php echo $this->session->flashdata('error')?>
                         </div>
                     <?php endif;?>
-                    <table id="example4" class="table table-hover">
+                    <table id="example4" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>STT</th>
                             <th>Ảnh bìa</th>
                             <th>Tiêu đề</th>
                             <th>Trạng thái</th>
-                            <th>Ngành học</th>
-                            <th>Tác giả</th>
+                            <th>Ngày đăng</th>
                             <th>Lượt xem</th>
                             <th></th>
                         </tr>
@@ -34,33 +32,31 @@
                             foreach ($news as $key => $row):
                                 ?>
                                 <tr>
-                                    <td><?php echo $row['news_id'] ?></td>
                                     <td><img style="max-width: 70px;max-height:70px;border-radius:5px" src="<?= $row['image']?>"/></td>
-                                    <td><?php echo $row['title'] ?></td>
+                                    <td class="title-news"><?php echo $row['title'] ?></td>
                                     <td>
                                         <?php if($row['status'] == 0): ?>
-                                        <a class="btn btn-danger btn-xs">Ẩn</a>
+                                            <a class="btn btn-danger btn-xs">Ẩn</a>
                                         <?php elseif($row['status'] == 1): ?>
-                                        <a class="btn btn-warning btn-xs">Chờ phê duyệt</a>
+                                            <a class="btn btn-warning btn-xs">Chờ phê duyệt</a>
                                         <?php else: ?>
-                                        <a class="btn btn-success btn-xs">Xuất bản</a>
+                                            <a class="btn btn-success btn-xs">Xuất bản</a>
                                         <?php endif; ?>
-                                </td>
-                                    <td><?php echo $row['major_name'] ?></td>
-                                    <td><?php echo $row['full_name'] ?></td>
+                                    </td>
+                                    <td><?php echo date('d/m/Y h:iA', $row['created_at'])?></td>
                                     <td>000</td>
                                     <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">
                                             <a href="<?php echo base_url('news/view/' . $row['news_id'])?>"><i class="fa fa-search-plus"></i></a>
                                         </button>
                                         <?php if($row['status'] == 0): ?>
-                                        <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                            <a href="<?php echo base_url('news/enable/' . $row['news_id'])?>"><i class="fa fa-eye"></i></a>
-                                        </button>
+                                            <button type="button" class="btn btn-inverse btn-custom btn-xs">
+                                                <a href="<?php echo base_url('news/enable/' . $row['news_id'])?>"><i class="fa fa-eye"></i></a>
+                                            </button>
                                         <?php else: ?>
-                                        <button type="button" class="btn btn-inverse btn-custom btn-xs">
-                                            <a href="<?php echo base_url('news/disable/' . $row['news_id'])?>"><i class="fa fa-eye-slash"></i></a>
-                                        </button>
+                                            <button type="button" class="btn btn-inverse btn-custom btn-xs">
+                                                <a href="<?php echo base_url('news/disable/' . $row['news_id'])?>"><i class="fa fa-eye-slash"></i></a>
+                                            </button>
                                         <?php endif; ?>
                                     </td>
                                 </tr>

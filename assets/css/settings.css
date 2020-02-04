@@ -341,3 +341,11 @@ hr {
 #imagePhoto {
     display: none;
 }
+.title-news {
+    width: 40%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 167px;
+    padding-right: 60px !important;
+}

@@ -221,6 +221,8 @@
 <script src="<?php echo base_url('assets/js/jquery.core.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.app.js'); ?>"></script>
 
+<script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script>
+
 <?php
 if (isset($customJs) && is_array($customJs)) {
 	foreach ($customJs as $script) {
