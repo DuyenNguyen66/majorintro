@@ -134,14 +134,18 @@ class News extends CI_Controller {
     }
     
     public function enable($news_id) {
-        $params = array(
-            'status' => 1
-        );
-        $this->news_model->update($news_id, $params);
         if($this->session->has_userdata('admin'))
         {
+            $params = array(
+                'status' => 2
+            );
+            $this->news_model->update($news_id, $params);
             redirect('list-news-a');
         }else {
+            $params = array(
+                'status' => 1
+            );
+            $this->news_model->update($news_id, $params);
             redirect('list-news');
         }
     }
@@ -157,5 +161,37 @@ class News extends CI_Controller {
         }else {
             redirect('list-news');
         }
+    }
+    
+    public function view($news_id) {
+        $editor = $this->session->userdata('admin');
+        if($editor == null)
+        {
+            redirect('login');
+        }
+        $news = $this->news_model->getById($news_id);
+        $cmd = $this->input->post('cmd');
+        if($cmd != '') {
+            $params = array(
+                'status' => 2
+            );
+            $this->news_model->update($news_id, $params);
+            redirect('list-news-a');
+        }
+        $layoutParams = array(
+            'news' => $news
+        );
+        $content = $this->load->view('admin/view_news', $layoutParams, true);
+    
+        $data = array();
+        $data['customCss'] = array('assets/css/settings.css');
+        $data['customJs'] = array( 'assets/js/settings.js');
+        $data['parent_id'] = 3;
+        $data['sub_id'] = 0;
+        $data['group'] = 1;
+        $data['content'] = $content;
+        $this->load->view('admin_main_layout', $data);
+        
+
     }
 }

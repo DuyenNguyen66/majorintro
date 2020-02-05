@@ -342,11 +342,15 @@ hr {
     display: none;
 }
 .title-news {
-    width: 40%;
+    width: 35%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 167px;
+    /*-webkit-line-clamp: 2;*/
+    /*height: 35px;*/
+    /*display: -webkit-box;*/
+    /*-webkit-box-orient: vertical;*/
+    max-width: 270px;
     padding-right: 60px !important;
 }
 .tooltip .tooltiptext {

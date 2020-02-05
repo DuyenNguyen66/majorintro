@@ -14,15 +14,15 @@
                             <?php echo $this->session->flashdata('error')?>
                         </div>
                     <?php endif;?>
-                    <table id="example4" class="table table-hover">
+                    <table id="example4" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>STT</th>
                             <th>Ảnh bìa</th>
                             <th>Tiêu đề</th>
                             <th>Trạng thái</th>
                             <th>Ngành học</th>
                             <th>Tác giả</th>
+                            <th>Ngày đăng</th>
                             <th>Lượt xem</th>
                             <th></th>
                         </tr>
@@ -34,9 +34,8 @@
                             foreach ($news as $key => $row):
                                 ?>
                                 <tr>
-                                    <td><?php echo $row['news_id'] ?></td>
                                     <td><img style="max-width: 70px;max-height:70px;border-radius:5px" src="<?= $row['image']?>"/></td>
-                                    <td><?php echo $row['title'] ?></td>
+                                    <td class="title-news"><?php echo $row['title'] ?></td>
                                     <td>
                                         <?php if($row['status'] == 0): ?>
                                         <a class="btn btn-danger btn-xs">Ẩn</a>
@@ -48,6 +47,7 @@
                                 </td>
                                     <td><?php echo $row['major_name'] ?></td>
                                     <td><?php echo $row['full_name'] ?></td>
+                                    <td><?php echo date('d/m/Y', $row['created_at']) ?></td>
                                     <td>000</td>
                                     <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">

@@ -15,7 +15,7 @@
 	                    	<?php echo $this->session->flashdata('error')?>
 	                    </div>
 	                <?php endif;?>
-                	<table id="example4" class="table table-hover">
+                	<table id="example4" class="table table-striped">
                 		<thead>
                 			<tr>
                 				<th>Ảnh đại diện</th>
