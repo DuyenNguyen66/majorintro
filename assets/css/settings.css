@@ -150,9 +150,9 @@ button a {
     padding: 20px;
 }
 .header-title {
-    margin-left: 20px;
     font-weight: bold;
     font-size: 20px;
+    padding-bottom: 10px;
 }
 hr {
     margin: 10px 20px 30px;
@@ -342,7 +342,7 @@ hr {
     display: none;
 }
 .title-news {
-    width: 35%;
+    width: 32%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -372,4 +372,7 @@ hr {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+.db-custom {
+    margin-top: 20px;
 }

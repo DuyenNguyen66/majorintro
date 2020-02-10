@@ -8,7 +8,7 @@
 
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon_1.ico'); ?>">
 
-	<title>DMS</title>
+	<title>MIT</title>
 
 	<link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url('assets/css/core.css'); ?>" rel="stylesheet" type="text/css"/>

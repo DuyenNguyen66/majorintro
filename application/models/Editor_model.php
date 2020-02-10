@@ -22,7 +22,7 @@ class Editor_model extends CI_Model
     }
     
     public function getAll() {
-        $this->db->select('e.*, m.major_name');
+        $this->db->select('e.*, m.major_code, m.major_name');
         $this->db->from('editor e');
         $this->db->join('major m', 'e.major_id = m.major_id', 'left');
         $query = $this->db->get();

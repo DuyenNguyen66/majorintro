@@ -20,8 +20,10 @@ class Editor extends Base_Controller
         if($account['status'] == 0) {
             $this->session->set_flashdata('acc_mess', 'Thay đổi mật khẩu để kích hoạt tài khoản');
         }
+        $major = $this->major_model->getById($account['major_id']);
         $layoutParams = array(
-            'account' => $account
+            'account' => $account,
+            'major' => $major
         );
         $content = $this->load->view('editor/dashboard', $layoutParams, true);
         
@@ -35,7 +37,7 @@ class Editor extends Base_Controller
         $this->load->view('admin_main_layout', $data);
     }
     
-    public function add()
+    public function add() //for admin
     {
         $majors = $this->major_model->getAll();
         
@@ -106,7 +108,7 @@ class Editor extends Base_Controller
         $this->load->view('admin_main_layout', $data);
     }
     
-    public function getList()
+    public function getList() //for admin
     {
         $editor = $this->session->userdata('admin');
         if ($editor == null) {

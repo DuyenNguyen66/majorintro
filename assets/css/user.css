@@ -1,0 +1,131 @@
+body {
+    background-color: #fff;
+}
+#wrapper {
+    overflow: unset;
+}
+
+/*Header*/
+.topbar {
+    position: unset;
+}
+.top-header {
+    width: 75%;
+    margin: auto;
+    margin-top: 10px;
+}
+.topbar .topbar-left {
+    width: 30%;
+}
+.top-header-info {
+    float: right;
+    text-align: right;
+    font-size: 30px;
+    color: #dc3030;
+}
+.navbar {
+    background-color: #ab0000;
+    padding: 0 13%;
+    border-radius: 0;
+    margin-bottom: 0px;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #800000;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ab0000;
+    color: white;
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*End header*/
+
+/*Content*/
+.middle-page {
+    background-color: #00aff0;
+    width: 75%;
+    margin: auto;
+}
+
+/*End Content*/
+
+/*Footer*/
+.footer-page {
+    color: white;
+    background-color: #1a2942;
+}
+.footer-info {
+    width: 75%;
+    margin: auto;
+}
+.footer-info h3 {
+    color: #fff;
+}
+.ul-info {
+    list-style-type: none;
+    padding-left: 0;
+}
+.ul-info li {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+.ul-info > li > i {
+    font-size: 18px;
+    vertical-align: middle;
+    max-width: 30px;
+    width: 100%;
+    text-align: center;
+    margin-right: 5px;
+}
+.ul-info > li > p {
+    margin-bottom: 0;
+}
