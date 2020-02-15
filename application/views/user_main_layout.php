@@ -53,8 +53,8 @@
         <!-- Menu -->
         <div class="top-menu">
             <div class="navbar">
-                <a href="#home">Home</a>
-                <a href="#news">News</a>
+                <a href="<?= base_url('dashboard')?>" class="waves-effect<?php echo isset($parent_id) && $parent_id == 1 ? ' active' : ''; ?>">Trang chủ</a>
+                <a href="#news" class="waves-effect<?php echo isset($parent_id) && $parent_id == 2 ? ' active' : ''; ?>">News</a>
                 <div class="dropdown">
                     <button class="dropbtn">Dropdown
                         <i class="fa fa-caret-down"></i>
@@ -137,15 +137,21 @@
             
         </div>
         <div class="footer-share row">
-            <div class="col-md-6">
+            <div class="col-md-6" style="padding: 10px;">
                 © 2020 Trường Đại học Công nghệ Giao thông vận tải
             </div>
             <div class="col-md-6">
                 <a href="#">
                     <i class="fa fa-envelope-square"></i>
-                    <i class="fa fa-facebook-square"></i>
-                    <i class="fa fa-google-plus-square"></i>
-                    <i class="fa fa-youtube"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-youtube-square"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-google-plus-square"></i>
                 </a>
             </div>
         </div>
@@ -174,6 +180,7 @@
 
 <script src="<?php echo base_url('assets/js/jquery.core.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.app.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/user.js'); ?>"></script>
 
 
 <?php
