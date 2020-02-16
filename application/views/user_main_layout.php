@@ -75,9 +75,35 @@
         <!-- Start content -->
         <!--<div class="content" ng-app="project">-->
             <div class="container">
-                <?php
-                echo isset($content) ? $content : 'Empty page';
-                ?>
+                <div class="home row">
+                    <div class="content-right col-md-4">
+                        <div class="search-box">
+                            <input id="search-text" type="text" class="form-control" placeholder="Tìm kiếm bài viết" >
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="category">
+                            <h4>Ngành đào tạo</h4>
+                            <hr>
+                            <?php foreach($groups as $key => $item): ?>
+                            <div class="group">
+                                <h4><a href="#"><?= $item['group_name']?></a></h4>
+                                <?php if($item['majors'] != null):?>
+                                    <?php foreach($item['majors'] as $key => $major):?>
+                                    <div class="major">
+                                        <a><i class="far fa-dot-circle"></i><?= $major['major_name']?></a>
+                                    </div>
+                                    <?php endforeach;?>
+                                <?php endif;?>
+                            </div>
+                            <?php endforeach;?>
+                        </div>
+                    </div>
+                    <div class="content-left col-md-8">
+                        <?php
+                        echo isset($content) ? $content : 'Empty page';
+                        ?>
+                    </div>
+                </div>
             </div> <!-- container -->
         <!--</div>-->
     </div>
@@ -190,5 +216,6 @@ if (isset($customJs) && is_array($customJs)) {
     }
 }
 ?>
+
 </body>
 </html>

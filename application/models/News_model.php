@@ -47,5 +47,13 @@ class News_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    public function getNews($key) {
+        $this->db->from('news n');
+        $this->db->join('major m', 'n.major_id = m.major_id');
+        $this->db->where('n.title like "%' . $key . '%"');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
 }

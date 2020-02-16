@@ -6,5 +6,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['dashboard'] = 'index/index';
-$route['profile/(:num)'] = 'index/editProfile/$1';
 

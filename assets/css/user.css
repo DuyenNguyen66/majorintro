@@ -2,6 +2,7 @@ body {
     background-color: #fff;
     font-family: Arial;
     letter-spacing: 0.5px;
+    color: #292b2c;
 }
 #wrapper {
     overflow: unset;
@@ -154,13 +155,16 @@ body {
 .content-left a {
     color: #000000;
 }
+.content-right {
+    padding: 0 30px 0 0;
+}
 .item {
     background-color: white;
     box-shadow: 5px 5px 30px #d2d2d2;
     transition: 0.5s;
     padding: unset;
     width: 43%;
-    margin-right: 50px;
+    margin-left: 50px;
 }
 .item:hover {
     background-color: #f1f1f1;
@@ -177,8 +181,8 @@ body {
     text-overflow: ellipsis;
     letter-spacing: normal;
     font-weight: 600;
-    color: black;
     transition: 0.5s;
+    color: #292b2c;
 }
 .item-info h3:hover {
     color: #f77d35;
@@ -214,4 +218,43 @@ body {
 }
 .item-more .col-md-6:nth-child(2) a:hover {
     color: black;
+}
+.search-box input {
+    position: relative;
+}
+.search-box i {
+    position: absolute;
+    top: 13px;
+    right: 45px;
+}
+.category h4 {
+    font-size: 23px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 40px;
+}
+.category hr {
+    color: orange;
+    border: 2px solid;
+    margin: 0 0 20px 0;
+}
+.group h4 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 10px 0 0 0;
+}
+.major {
+    margin: 7px 15px;
+}
+.major i {
+    margin-right: 5px;
+}
+.group a, .major a {
+    color: #292b2c;
+}
+.group a:hover, .major a:hover {
+    color: #f77d35;
+}
+.text-center {
+    text-align: center;
 }

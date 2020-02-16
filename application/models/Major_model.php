@@ -45,4 +45,11 @@ class Major_model extends CI_Model {
 	        return null;
         }
     }
+    
+    public function getByGroup($group_id) {
+	    $this->db->select('major_name');
+	    $this->db->where('group_id', $group_id);
+	    $query = $this->db->get($this->table);
+	    return $query->result_array();
+    }
 } 
