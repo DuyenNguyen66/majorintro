@@ -24,11 +24,15 @@ class Index extends CI_Controller
         foreach ($groups as $key => $item) {
             $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
         }
+        $this->mybreadcrumb->add('Trang chủ', base_url());
+        
         $data = array();
         $data['groups'] = $groups;
         $data['parent_id'] = 'home';
         $data['title'] = 'Trang chủ';
         $data['content'] = $content;
+        $data['breadcrumbs'] = $this->mybreadcrumb->render();
+    
         $this->load->view('user_main_layout', $data);
     }
     

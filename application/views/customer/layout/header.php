@@ -34,4 +34,7 @@
             <a href="<?= base_url('lien-he')?>" class="waves-effect<?php echo isset($parent_id) && $parent_id == 'contact' ? ' active' : ''; ?>">Liên hệ</a>
         </div>
     </div>
+    <div class="breadcrumbs">
+        <?= $breadcrumbs;?>
+    </div>
 </div>

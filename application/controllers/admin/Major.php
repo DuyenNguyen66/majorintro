@@ -102,7 +102,7 @@ class Major extends CI_Controller {
     
     public function show($major_id) {
 	    $major = $this->major_model->getById($major_id);
-	    $news = $this->news_model->getByMajor($major_id);
+	    $news = $this->news_model->getByMajor($major_id, $key = '');
 	    
         $layoutParams = array(
             'news' => $news,
@@ -114,12 +114,33 @@ class Major extends CI_Controller {
         foreach ($groups as $key => $item) {
             $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
         }
+        $this->mybreadcrumb->add('Trang chủ', base_url());
+        $this->mybreadcrumb->add('Ngành ' . $major['group_name'], base_url('nganh-hoc/' . $major['group_id']));
+        $this->mybreadcrumb->add($major['major_name'], base_url('chuyen-nganh/' . $major['major_id']));
+        
         $data = array();
         $data['groups'] = $groups;
         $data['parent_id'] = $major['group_id'];
         $data['title'] = $major['major_name'];
         $data['breadcrumb'] = $major['major_name'];
         $data['content'] = $content;
+        $data['breadcrumbs'] = $this->mybreadcrumb->render();
+    
         $this->load->view('user_main_layout', $data);
+    }
+    
+    public function searchNews() {
+        $key = $this->input->get('key');
+        $major_id = $this->input->get('major_id');
+        $major = $this->major_model->getById($major_id);
+    
+        $news = $this->news_model->getByMajor($major_id, $key);
+        $layoutParams = array(
+            'news' => $news,
+            'major' => $major
+        );
+        $content = $this->load->view('customer/news_list', $layoutParams, true);
+        echo json_encode($content);
+    
     }
 }

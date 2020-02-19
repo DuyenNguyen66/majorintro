@@ -97,10 +97,10 @@ class Group extends CI_Controller {
     public function show($group_id) {
 	    $group = $this->group_model->getById($group_id);
         $majors = $this->major_model->getByGroup($group_id);
-        
+    
         $layoutParams = array(
             'group' => $group,
-            'majors' => $majors
+            'majors' => $majors,
         );
         $content = $this->load->view('customer/majors_list', $layoutParams, true);
     
@@ -108,12 +108,17 @@ class Group extends CI_Controller {
         foreach ($groups as $key => $item) {
             $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
         }
+        $this->mybreadcrumb->add('Trang chủ', base_url());
+        $this->mybreadcrumb->add('Ngành ' . $group['group_name'], base_url('nganh-hoc/' . $group_id));
+        
         $data = array();
         $data['groups'] = $groups;
         $data['parent_id'] = $group_id;
         $data['title'] = $group['group_name'];
         $data['breadcrumb'] = $group['group_name'];
         $data['content'] = $content;
+        $data['breadcrumbs'] = $this->mybreadcrumb->render();
+        
         $this->load->view('user_main_layout', $data);
         
     }

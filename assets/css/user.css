@@ -100,6 +100,17 @@ body {
 .active {
     background-color: #dc5100 !important;
 }
+.breadcrumbs {
+    padding: 0 13%;
+    background-color: bisque;
+}
+.breadcrumbs ol, a {
+    color: #505458;
+}
+.breadcrumbs .active {
+    /*color: white;*/
+    background-color: unset !important;
+}
 /*End header*/
 
 /*Content*/
@@ -154,7 +165,7 @@ body {
 }
 /*Home page*/
 .home {
-    margin: 40px 0;
+    margin: 10px 0 20px;
 }
 .content-left a {
     color: #000000;

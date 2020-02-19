@@ -1,8 +1,9 @@
 <div class="cover">
+    <input id="major_id" value="<?= $major['major_id']?>" hidden>
     <h3>Chuyên ngành <?= $major['major_name']?></h3>
     <h4>Các bài viết liên quan</h4>
 </div>
-<div class="row">
+<div class="news-content row">
     <?php if (isset($news) && is_array($news)): ?>
         <?php foreach ($news as $key => $row): ?>
             <a href="<?= base_url('bai-viet/' . $row['news_id'])?>">

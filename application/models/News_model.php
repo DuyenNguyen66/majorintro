@@ -56,8 +56,11 @@ class News_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function getByMajor($major_id) {
+    public function getByMajor($major_id, $key) {
 	    $this->db->where('major_id', $major_id);
+	    if($key != '') {
+	        $this->db->where('title like "%' .$key . '%"');
+        }
         $query = $this->db->get($this->table);
         return $query->result_array();
     }
