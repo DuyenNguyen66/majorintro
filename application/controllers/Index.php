@@ -18,7 +18,7 @@ class Index extends CI_Controller
         $layoutParams = array(
             'news' => $news
         );
-        $content = $this->load->view('dashboard', $layoutParams, true);
+        $content = $this->load->view('customer/dashboard', $layoutParams, true);
     
         $groups = $this->group_model->getAll();
         foreach ($groups as $key => $item) {
@@ -26,7 +26,8 @@ class Index extends CI_Controller
         }
         $data = array();
         $data['groups'] = $groups;
-        $data['parent_id'] = 1;
+        $data['parent_id'] = 'home';
+        $data['title'] = 'Trang chủ';
         $data['content'] = $content;
         $this->load->view('user_main_layout', $data);
     }
@@ -44,14 +45,14 @@ class Index extends CI_Controller
             $layoutParams = array(
                 'news' => $news
             );
-            $content = $this->load->view('dashboard', $layoutParams, true);
+            $content = $this->load->view('customer/dashboard', $layoutParams, true);
             echo json_encode($content);
         }else {
             $news = $this->news_model->getLastNews();
             $layoutParams = array(
                 'news' => $news
             );
-            $content = $this->load->view('dashboard', $layoutParams, true);
+            $content = $this->load->view('customer/dashboard', $layoutParams, true);
             echo json_encode($content);
         }
     }

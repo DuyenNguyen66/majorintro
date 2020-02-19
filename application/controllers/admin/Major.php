@@ -6,6 +6,7 @@ class Major extends CI_Controller {
 		parent::__construct();
 		$this->load->model('major_model');
 		$this->load->model('group_model');
+		$this->load->model('news_model');
 	}
 
 	public function index() {
@@ -18,7 +19,7 @@ class Major extends CI_Controller {
 		$layoutParams = array(
 			'majors' => $majors
 		);
-		$content = $this->load->view('admin/major_list', $layoutParams, true);
+		$content = $this->load->view('admin/major_list.php', $layoutParams, true);
 
 		$data = array();
 		$data['customCss'] = array('assets/css/settings.css');
@@ -98,5 +99,27 @@ class Major extends CI_Controller {
         $data['content'] = $content;
         $this->load->view('admin_main_layout', $data);
     }
-
+    
+    public function show($major_id) {
+	    $major = $this->major_model->getById($major_id);
+	    $news = $this->news_model->getByMajor($major_id);
+	    
+        $layoutParams = array(
+            'news' => $news,
+            'major' => $major
+        );
+        $content = $this->load->view('customer/news_list', $layoutParams, true);
+    
+        $groups = $this->group_model->getAll();
+        foreach ($groups as $key => $item) {
+            $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
+        }
+        $data = array();
+        $data['groups'] = $groups;
+        $data['parent_id'] = $major['group_id'];
+        $data['title'] = $major['major_name'];
+        $data['breadcrumb'] = $major['major_name'];
+        $data['content'] = $content;
+        $this->load->view('user_main_layout', $data);
+    }
 }

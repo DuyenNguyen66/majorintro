@@ -69,7 +69,7 @@ body {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 190px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 5px;
@@ -93,8 +93,12 @@ body {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+.dropbtn i {
+    font-size: 12px;
+    padding: 5px 0 0 5px;
+}
 .active {
-    background-color: #dc5100;
+    background-color: #dc5100 !important;
 }
 /*End header*/
 
@@ -158,17 +162,18 @@ body {
 .content-right {
     padding: 0 30px 0 0;
 }
-.item {
+.item, .major-item {
     background-color: white;
     box-shadow: 5px 5px 30px #d2d2d2;
-    transition: 0.5s;
     padding: unset;
     width: 43%;
     margin-left: 50px;
+    transition: transform 0.3s;
 }
 .item:hover {
     background-color: #f1f1f1;
     box-shadow: 5px 5px 30px #d2d2d2;
+    transform: scale(1.05,1.05);
 }
 .item-info {
     margin: 10px 15px;
@@ -257,4 +262,35 @@ body {
 }
 .text-center {
     text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.cover {
+    margin-bottom: 20px;
+}
+.cover h3 {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 600;
+}
+.major-item {
+    transition: transform 0.3s;
+}
+.major-item:hover {
+    transform: scale(1.05,1.05);
+}
+.btn-more {
+    background-color: #ff942f;
+    text-transform: uppercase;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+.btn-more a {
+    color: #fff;
+    font-size: 15px;
+}
+.btn-more:hover {
+    background-color: #f97900;
 }

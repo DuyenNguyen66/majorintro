@@ -55,5 +55,11 @@ class News_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    public function getByMajor($major_id) {
+	    $this->db->where('major_id', $major_id);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
 
 }

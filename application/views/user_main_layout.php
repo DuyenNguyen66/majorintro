@@ -8,7 +8,7 @@
     
     <link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon_1.ico'); ?>">
     
-    <title>MIT</title>
+    <title><?= $title?></title>
     
     <link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url('assets/css/core.css'); ?>" rel="stylesheet" type="text/css"/>
@@ -35,45 +35,11 @@
 <div id="wrapper">
     
     <!-- Header Start -->
-    <div class="topbar row">
-        
-        <!-- Top header -->
-        <div class="top-header row">
-            <div class="col-md-6 topbar-left">
-                <div class="text-center">
-                    <a href="<?php echo base_url('') ?>" class="logo">
-                        <img src="<?php echo base_url('media/logo.png')?>" alt="logo" width="90%">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 top-header-info">
-                <i class="fa fa-phone-volume"></i> 123 546 466 - 456 789 214
-            </div>
-        </div>
-        <!-- Menu -->
-        <div class="top-menu">
-            <div class="navbar">
-                <a href="<?= base_url('dashboard')?>" class="waves-effect<?php echo isset($parent_id) && $parent_id == 1 ? ' active' : ''; ?>">Trang chủ</a>
-                <a href="#news" class="waves-effect<?php echo isset($parent_id) && $parent_id == 2 ? ' active' : ''; ?>">News</a>
-                <div class="dropdown">
-                    <button class="dropbtn">Dropdown
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php $this->load->view('customer/layout/header')?>
     <!-- Header End -->
 
 
     <div class="middle-page row">
-        <!-- Start content -->
-        <!--<div class="content" ng-app="project">-->
             <div class="container">
                 <div class="home row">
                     <div class="content-right col-md-4">
@@ -86,11 +52,13 @@
                             <hr>
                             <?php foreach($groups as $key => $item): ?>
                             <div class="group">
-                                <h4><a href="#"><?= $item['group_name']?></a></h4>
+                                <h4><a href="<?= base_url('nganh-hoc/' . $item['group_id'])?>"><?= $item['group_name']?></a></h4>
                                 <?php if($item['majors'] != null):?>
                                     <?php foreach($item['majors'] as $key => $major):?>
                                     <div class="major">
-                                        <a><i class="far fa-dot-circle"></i><?= $major['major_name']?></a>
+                                        <a href="<?= base_url('chuyen-nganh/' . $major['major_id'])?>">
+                                            <i class="far fa-dot-circle"></i><?= $major['major_name']?>
+                                        </a>
                                     </div>
                                     <?php endforeach;?>
                                 <?php endif;?>
@@ -105,83 +73,8 @@
                     </div>
                 </div>
             </div> <!-- container -->
-        <!--</div>-->
     </div>
-    <footer class="footer-page">
-        <div class="footer-info row">
-            <div class="col-md-4">
-                <h3>Cơ sở Hà Nội</h3>
-                <ul class="ul-info">
-                    <li>
-                        <i class="fa fa-search-location"></i>
-                        <p>Số 54 Phố Triều Khúc, Phường Thanh Xuân Nam, Quận Thanh Xuân, Hà Nội</p>
-                    </li>
-                    <li>
-                        <i class="fa fa-envelope-open"></i>
-                        <p>infohn@utt.edu.vn</p>
-                    </li>
-                    <li>
-                        <i class="fa fa-mobile"></i>
-                        <p>Điện thoại: 0243.552.6713 - 0243.552.6714</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h3>Cơ sở Hà Nội</h3>
-                <ul class="ul-info">
-                    <li>
-                        <i class="fa fa-search-location"></i>
-                        <p>Số 54 Phố Triều Khúc, Phường Thanh Xuân Nam, Quận Thanh Xuân, Hà Nội</p>
-                    </li>
-                    <li>
-                        <i class="fa fa-envelope-open"></i>
-                        <p>infohn@utt.edu.vn</p>
-                    </li>
-                    <li>
-                        <i class="fa fa-mobile"></i>
-                        <p>Điện thoại: 0243.552.6713 - 0243.552.6714</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h3>Cơ sở Hà Nội</h3>
-                <ul class="ul-info">
-                    <li>
-                        <i class="fa fa-search-location"></i>
-                        <p>Số 54 Phố Triều Khúc, Phường Thanh Xuân Nam, Quận Thanh Xuân, Hà Nội</p>
-                    </li>
-                    <li>
-                        <i class="fa fa-envelope-open"></i>
-                        <p>infohn@utt.edu.vn</p>
-                    </li>
-                    <li>
-                        <i class="fa fa-mobile"></i>
-                        <p>Điện thoại: 0243.552.6713 - 0243.552.6714</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-        <div class="footer-share row">
-            <div class="col-md-6" style="padding: 10px;">
-                © 2020 Trường Đại học Công nghệ Giao thông vận tải
-            </div>
-            <div class="col-md-6">
-                <a href="#">
-                    <i class="fa fa-envelope-square"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-facebook-square"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-youtube-square"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-google-plus-square"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
+    <?php $this->load->view('customer/layout/footer')?>
 
 </div>
 <!-- END wrapper -->
