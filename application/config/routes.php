@@ -5,16 +5,10 @@ $route['default_controller'] = 'index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['dashboard'] = 'index/index';
-$route['login'] = 'index/login';
-$route['logout'] = 'index/logout';
-$route['register'] = 'index/register';
-$route['profile/(:num)'] = 'index/editProfile/$1';
+$route['trang-chu'] = 'index/index';
+$route['nganh-hoc/(:num)'] = 'admin/group/show/$1';
+$route['chuyen-nganh/(:num)'] = 'admin/major/show/$1';
+$route['bai-viet/(:num)'] = 'admin/news/detail/$1';
+$route['lien-he'] = 'index/contact';
 
-$route['registration'] = 'register/index';
-$route['register-list'] = 'register/registerList';
-$route['roommate-list'] = 'register/roommateList';
 
-$route['e-bill'] = 'bill/elecBill';
-$route['w-bill'] = 'bill/waterBill';
-$route['r-bill'] = 'bill/roomBill';

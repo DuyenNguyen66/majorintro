@@ -12,7 +12,7 @@ class News_model extends CI_Model {
 	public function getAll() {
 	    $this->db->select('n.*, m.major_name, e.full_name');
 	    $this->db->from('news n');
-	    $this->db->join('major m', 'n.major_id = m.major_id', 'left');
+	    $this->db->join('major m', 'n.major_id = m.major_id');
 	    $this->db->join('editor e', 'n.editor_id = e.editor_id');
 		$query = $this->db->get();
 		return $query->result_array();
@@ -26,5 +26,43 @@ class News_model extends CI_Model {
 		$this->db->where($this->id_name, $id);
 		$this->db->update($this->table, $params);
 	}
+	
+	public function getNewsByEditor($editor_id) {
+	    $this->db->where('editor_id', $editor_id);
+	    $query = $this->db->get($this->table);
+	    return $query->result_array();
+    }
+    
+    public function getById($id) {
+	    $this->db->where($this->id_name, $id);
+	    $query = $this->db->get($this->table);
+	    return $query->first_row('array');
+    }
+    
+    public function getLastNews() {
+	    $this->db->select('n.*, m.major_name');
+	    $this->db->from('news n');
+	    $this->db->join('major m', 'n.major_id = m.major_id');
+        $this->db->limit(10);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function getNews($key) {
+        $this->db->from('news n');
+        $this->db->join('major m', 'n.major_id = m.major_id');
+        $this->db->where('n.title like "%' . $key . '%"');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function getByMajor($major_id, $key) {
+	    $this->db->where('major_id', $major_id);
+	    if($key != '') {
+	        $this->db->where('title like "%' .$key . '%"');
+        }
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
 
 }

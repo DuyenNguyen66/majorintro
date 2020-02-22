@@ -8,7 +8,7 @@
 
 	<link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon_1.ico'); ?>">
 
-	<title>DMS</title>
+	<title>MIT</title>
 
 	<link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo base_url('assets/css/core.css'); ?>" rel="stylesheet" type="text/css"/>
@@ -220,6 +220,8 @@
 
 <script src="<?php echo base_url('assets/js/jquery.core.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.app.js'); ?>"></script>
+
+<script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script>
 
 <?php
 if (isset($customJs) && is_array($customJs)) {

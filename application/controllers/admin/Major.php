@@ -6,6 +6,7 @@ class Major extends CI_Controller {
 		parent::__construct();
 		$this->load->model('major_model');
 		$this->load->model('group_model');
+		$this->load->model('news_model');
 	}
 
 	public function index() {
@@ -18,7 +19,7 @@ class Major extends CI_Controller {
 		$layoutParams = array(
 			'majors' => $majors
 		);
-		$content = $this->load->view('admin/major_list', $layoutParams, true);
+		$content = $this->load->view('admin/major_list.php', $layoutParams, true);
 
 		$data = array();
 		$data['customCss'] = array('assets/css/settings.css');
@@ -98,131 +99,48 @@ class Major extends CI_Controller {
         $data['content'] = $content;
         $this->load->view('admin_main_layout', $data);
     }
-
-	public function editElec($price_id) {
-		$account = $this->session->userdata('admin');
-		if($account == null)
-		{
-			redirect('login');
-		}
-		$price = $this->price_model->getPriceById($price_id);
-		$cmd = $this->input->post('cmd');
-		if($cmd != null)
-		{
-			$params['name'] = $this->input->post('name');
-			$params['description'] = $this->input->post('description');
-			$params['Major'] = $this->input->post('Major');
-			$this->price_model->editElecPrice($params, $price_id);
-			redirect('electricity-price');
-		}
-		$layoutParams = array(
-			'Major' => $price
-		);
-		$content = $this->load->view('admin/elec_edit', $layoutParams, true);
-
-		$data = array();
-		$data['customCss'] = array('assets/css/settings.css');
-		$data['parent_id'] = 6;
-		$data['sub_id'] = 61;
-		$data['group'] = 1;
-		$data['content'] = $content;
-		$this->load->view('admin_main_layout', $data);
-	}
-
-	public function waterPrice() {
-		$account = $this->session->userdata('admin');
-		if($account == null)
-		{
-			redirect('login');
-		}
-		$water_prices = $this->price_model->getWaterPrice();
-		$cmd = $this->input->post('cmd');
-		if($cmd != null)
-		{
-			$params['name'] = $this->input->post('name');
-			$params['description'] = $this->input->post('description');
-			$params['Major'] = $this->input->post('Major');
-			$params['bill_type'] = 1;
-			$this->price_model->addWaterPrice($params);
-			redirect('water-price');
-		}
-		$layoutParams = array(
-			'water_prices' => $water_prices
-		);
-		$content = $this->load->view('admin/water_price', $layoutParams, true);
-
-		$data = array();
-		$data['customCss'] = array('assets/css/settings.css');
-		$data['parent_id'] = 6;
-		$data['sub_id'] = 62;
-		$data['group'] = 1;
-		$data['content'] = $content;
-		$this->load->view('admin_main_layout', $data);
-	}
-
-	public function editWater($price_id) {
-		$account = $this->session->userdata('admin');
-		if($account == null)
-		{
-			redirect('login');
-		}
-		$price = $this->price_model->getPriceById($price_id);
-		$cmd = $this->input->post('cmd');
-		if($cmd != null)
-		{
-			$params['name'] = $this->input->post('name');
-			$params['description'] = $this->input->post('description');
-			$params['Major'] = $this->input->post('Major');
-			$this->price_model->editWaterPrice($params, $price_id);
-			redirect('water-price');
-		}
-		$layoutParams = array(
-			'Major' => $price
-		);
-		$content = $this->load->view('admin/water_edit', $layoutParams, true);
-
-		$data = array();
-		$data['customCss'] = array('assets/css/settings.css');
-		$data['parent_id'] = 6;
-		$data['sub_id'] = 62;
-		$data['group'] = 1;
-		$data['content'] = $content;
-		$this->load->view('admin_main_layout', $data);
-	}
-
-	public function roomPrice() {
-		$account = $this->session->userdata('admin');
-		if($account == null)
-		{
-			redirect('login');
-		}
-		$room_price = $this->price_model->getRoomPrice();
-		$cmd = $this->input->post('cmd');
-		if($cmd != null)
-		{
-			$params['name'] = $this->input->post('name');
-			$params['description'] = $this->input->post('description');
-			$params['Major'] = $this->input->post('Major');
-			$params['bill_type'] = 3;
-			$currentPrice = $this->price_model->getRoomPrice();
-			if ($currentPrice != null) {
-				$this->price_model->deleteCurrentPrice($currentPrice['price_id']);
-			}
-			$this->price_model->addRoomPrice($params);
-			redirect('room-price');
-		}
-		$layoutParams = array(
-			'room_price' => $room_price
-		);
-		$content = $this->load->view('admin/room_price', $layoutParams, true);
-
-		$data = array();
-		$data['customCss'] = array('assets/css/settings.css');
-		$data['parent_id'] = 6;
-		$data['sub_id'] = 63;
-		$data['group'] = 1;
-		$data['content'] = $content;
-		$this->load->view('admin_main_layout', $data);
-	}
-
+    
+    public function show($major_id) {
+	    $major = $this->major_model->getById($major_id);
+	    $news = $this->news_model->getByMajor($major_id, $key = '');
+	    
+        $layoutParams = array(
+            'news' => $news,
+            'major' => $major
+        );
+        $content = $this->load->view('customer/news_list', $layoutParams, true);
+    
+        $groups = $this->group_model->getAll();
+        foreach ($groups as $key => $item) {
+            $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
+        }
+        $this->mybreadcrumb->add('Trang chủ', base_url());
+        $this->mybreadcrumb->add('Ngành ' . $major['group_name'], base_url('nganh-hoc/' . $major['group_id']));
+        $this->mybreadcrumb->add($major['major_name'], base_url('chuyen-nganh/' . $major['major_id']));
+        
+        $data = array();
+        $data['groups'] = $groups;
+        $data['parent_id'] = $major['group_id'];
+        $data['title'] = $major['major_name'];
+        $data['breadcrumb'] = $major['major_name'];
+        $data['content'] = $content;
+        $data['breadcrumbs'] = $this->mybreadcrumb->render();
+    
+        $this->load->view('user_main_layout', $data);
+    }
+    
+    public function searchNews() {
+        $key = $this->input->get('key');
+        $major_id = $this->input->get('major_id');
+        $major = $this->major_model->getById($major_id);
+    
+        $news = $this->news_model->getByMajor($major_id, $key);
+        $layoutParams = array(
+            'news' => $news,
+            'major' => $major
+        );
+        $content = $this->load->view('customer/news_list', $layoutParams, true);
+        echo json_encode($content);
+    
+    }
 }

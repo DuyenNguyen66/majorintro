@@ -27,7 +27,7 @@ class Major_model extends CI_Model {
 	}
 
 	public function getById($id) {
-	    $this->db->select('m.*, mg.group_name');
+	    $this->db->select('m.*, mg.group_id, mg.group_name');
 	    $this->db->from('major m');
 	    $this->db->join('major_group mg', 'm.group_id = mg.group_id', 'left');
 		$this->db->where('m.major_id', $id);
@@ -44,5 +44,11 @@ class Major_model extends CI_Model {
         }else {
 	        return null;
         }
+    }
+    
+    public function getByGroup($group_id) {
+	    $this->db->where('group_id', $group_id);
+	    $query = $this->db->get($this->table);
+	    return $query->result_array();
     }
 } 

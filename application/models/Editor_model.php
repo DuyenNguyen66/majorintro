@@ -22,7 +22,7 @@ class Editor_model extends CI_Model
     }
     
     public function getAll() {
-        $this->db->select('e.*, m.major_name');
+        $this->db->select('e.*, m.major_code, m.major_name');
         $this->db->from('editor e');
         $this->db->join('major m', 'e.major_id = m.major_id', 'left');
         $query = $this->db->get();
@@ -55,6 +55,13 @@ class Editor_model extends CI_Model
         } else {
             return null;
         }
+    }
+    
+    public function checkPass($editor_id, $password) {
+        $this->db->where($this->id_name, $editor_id);
+        $this->db->where('password', $password);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
     }
     
 }
