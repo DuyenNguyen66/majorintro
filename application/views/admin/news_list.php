@@ -20,7 +20,7 @@
                             <th>Ảnh bìa</th>
                             <th>Tiêu đề</th>
                             <th>Trạng thái</th>
-                            <th>Ngành học</th>
+                            <th>Chuyên ngành</th>
                             <th>Tác giả</th>
                             <th>Ngày đăng</th>
                             <th>Lượt xem</th>
@@ -44,7 +44,7 @@
                                         <?php else: ?>
                                         <a class="btn btn-success btn-xs">Xuất bản</a>
                                         <?php endif; ?>
-                                </td>
+                                    </td>
                                     <td><?php echo $row['major_name'] ?></td>
                                     <td><?php echo $row['full_name'] ?></td>
                                     <td><?php echo date('d/m/Y', $row['created_at']) ?></td>

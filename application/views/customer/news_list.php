@@ -1,6 +1,7 @@
 <div class="cover">
     <input id="major_id" value="<?= $major['major_id']?>" hidden>
     <h3>Chuyên ngành <?= $major['major_name']?></h3>
+    <hr>
     <h4>Các bài viết liên quan</h4>
 </div>
 <div class="news-content row">

@@ -1,5 +1,5 @@
 <footer class="footer-page">
-    <div class="footer-info row">
+    <div class="footer-info">
         <div class="col-md-4">
             <h3>Cơ sở Hà Nội</h3>
             <ul class="ul-info">
@@ -70,5 +70,10 @@
                 <i class="fab fa-google-plus-square"></i>
             </a>
         </div>
+    </div>
+    <div class="btn-top">
+        <button type="button" class="btn btn-warning">
+            <a href="#"><i class="fas fa-chevron-up"></i></a>
+        </button>
     </div>
 </footer>

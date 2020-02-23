@@ -48,6 +48,7 @@ class Major_model extends CI_Model {
     
     public function getByGroup($group_id) {
 	    $this->db->where('group_id', $group_id);
+	    $this->db->where('status', 1);
 	    $query = $this->db->get($this->table);
 	    return $query->result_array();
     }

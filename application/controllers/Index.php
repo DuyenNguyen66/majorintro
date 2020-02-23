@@ -20,7 +20,7 @@ class Index extends CI_Controller
         );
         $content = $this->load->view('customer/dashboard', $layoutParams, true);
     
-        $groups = $this->group_model->getAll();
+        $groups = $this->group_model->getActiveGroup();
         foreach ($groups as $key => $item) {
             $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
         }
@@ -59,6 +59,28 @@ class Index extends CI_Controller
             $content = $this->load->view('customer/dashboard', $layoutParams, true);
             echo json_encode($content);
         }
+    }
+    
+    public function contact() {
+        $layoutParams = array(
+        );
+        $content = $this->load->view('customer/contact', $layoutParams, true);
+    
+        $groups = $this->group_model->getAll();
+        foreach ($groups as $key => $item) {
+            $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
+        }
+        $this->mybreadcrumb->add('Trang chủ', base_url());
+        $this->mybreadcrumb->add('Liên hệ', base_url('lien-he'));
+    
+        $data = array();
+        $data['groups'] = $groups;
+        $data['parent_id'] = 'contact';
+        $data['title'] = 'Liên hệ';
+        $data['content'] = $content;
+        $data['breadcrumbs'] = $this->mybreadcrumb->render();
+    
+        $this->load->view('user_main_layout', $data);
     }
 }
 

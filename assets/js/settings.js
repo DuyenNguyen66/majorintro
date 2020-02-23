@@ -71,111 +71,18 @@ $('#re_password').keyup(function () {
 });
 
 //Ckeditor
-// CKEDITOR.replace('edit_frame');
-
-CKEDITOR.addCss('figure[class*=easyimage-gradient]::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; right: 0; }' +
-	'figure[class*=easyimage-gradient] figcaption { position: relative; z-index: 2; }' +
-	'.easyimage-gradient-1::before { background-image: linear-gradient( 135deg, rgba( 115, 110, 254, 0 ) 0%, rgba( 66, 174, 234, .72 ) 100% ); }' +
-	'.easyimage-gradient-2::before { background-image: linear-gradient( 135deg, rgba( 115, 110, 254, 0 ) 0%, rgba( 228, 66, 234, .72 ) 100% ); }');
-
-CKEDITOR.replace('edit_frame', {
-	extraPlugins: 'print,pagebreak,pastefromword,format,font,copyformatting,colorbutton,justify,easyimage,tableresize,embed,emoji',
-	removePlugins: 'image',
-	toolbar: [
-		{
-			name: 'document',
-			items: ['Print','PageBreak']
-		},
-		{
-			name: 'clipboard',
-			items: ['Paste', 'PasteFromWord', 'Undo', 'Redo', 'CopyFormatting']
-		},
-		{
-			name: 'styles',
-			items: ['Format', 'Font', 'FontSize']
-		},
-		{
-			name: 'colors',
-			items: ['TextColor', 'BGColor']
-		},
-		{
-			name: 'basicstyles',
-			items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat']
-		},
-		{
-			name: 'align',
-			items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-		},
-		{
-			name: 'paragraph',
-			items: ['NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote']
-		},
-		{
-			name: 'links',
-			items: ['Link', 'Unlink', 'EmojiPanel']
-		},
-		{
-			name: 'insert',
-			items: ['EasyImageUpload', 'Embed', 'Table']
-		},
-		{
-			name: 'tools',
-			items: ['Maximize']
-		},
-		{
-			name: 'editing',
-			items: ['Scayt']
-		}
-
-	],
-	height: 630,
-
-	//Embed resources
-	embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
-	// image2_alignClasses: ['image-align-left', 'image-align-center', 'image-align-right'],
-	// image2_disableResizer: false,
-
-	//Easy image
-	cloudServices_uploadUrl: 'https://33333.cke-cs.com/easyimage/upload/',
-	cloudServices_tokenUrl: 'https://33333.cke-cs.com/token/dev/ijrDsqFix838Gh3wGO3F77FSW94BwcLXprJ4APSp3XQ26xsUHTi0jcb1hoBt',
-	easyimage_styles: {
-		gradient1: {
-			group: 'easyimage-gradients',
-			attributes: {
-				'class': 'easyimage-gradient-1'
-			},
-			label: 'Blue Gradient',
-			icon: 'https://ckeditor.com/docs/ckeditor4/4.13.1/examples/assets/easyimage/icons/gradient1.png',
-			iconHiDpi: 'https://ckeditor.com/docs/ckeditor4/4.13.1/examples/assets/easyimage/icons/hidpi/gradient1.png'
-		},
-		gradient2: {
-			group: 'easyimage-gradients',
-			attributes: {
-				'class': 'easyimage-gradient-2'
-			},
-			label: 'Pink Gradient',
-			icon: 'https://ckeditor.com/docs/ckeditor4/4.13.1/examples/assets/easyimage/icons/gradient2.png',
-			iconHiDpi: 'https://ckeditor.com/docs/ckeditor4/4.13.1/examples/assets/easyimage/icons/hidpi/gradient2.png'
-		},
-		noGradient: {
-			group: 'easyimage-gradients',
-			attributes: {
-				'class': 'easyimage-no-gradient'
-			},
-			label: 'No Gradient',
-			icon: 'https://ckeditor.com/docs/ckeditor4/4.13.1/examples/assets/easyimage/icons/nogradient.png',
-			iconHiDpi: 'https://ckeditor.com/docs/ckeditor4/4.13.1/examples/assets/easyimage/icons/hidpi/nogradient.png'
-		}
-	},
-	easyimage_toolbar: [
-		'EasyImageFull',
-		'EasyImageSide',
-		'EasyImageGradient1',
-		'EasyImageGradient2',
-		'EasyImageNoGradient',
-		'EasyImageAlt'
-	],
+var base_url = window.location.origin
+CKEDITOR.replace( 'edit_frame', {
+	height: 700,
+	filebrowserBrowseUrl : base_url + '/assets/plugins/responsive_filemanager/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+	filebrowserUploadUrl : base_url + '/assets/plugins/responsive_filemanager/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+	filebrowserImageBrowseUrl : base_url + '/assets/plugins/responsive_filemanager/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+	embed_provider : '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+	extraPlugins : 'embed, embedbase',
+	removePlugins: 'iframe'
 });
+
+
 
 
 

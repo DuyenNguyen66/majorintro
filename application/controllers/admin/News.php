@@ -6,6 +6,8 @@ class News extends CI_Controller {
 		parent::__construct();
 		$this->load->model('news_model');
 		$this->load->model('editor_model');
+		$this->load->model('group_model');
+		$this->load->model('major_model');
 	}
 
 	public function index() { //for editor
@@ -191,7 +193,34 @@ class News extends CI_Controller {
         $data['group'] = 1;
         $data['content'] = $content;
         $this->load->view('admin_main_layout', $data);
-        
-
+    }
+    
+    //For customer
+    public function detail($news_id) {
+        $news = $this->news_model->getById($news_id);
+    
+        $layoutParams = array(
+            'news' => $news,
+        );
+        $content = $this->load->view('customer/news_detail', $layoutParams, true);
+    
+        $groups = $this->group_model->getAll();
+        foreach ($groups as $key => $item) {
+            $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
+        }
+        $this->mybreadcrumb->add('Trang chủ', base_url());
+        $this->mybreadcrumb->add('Ngành ' . $news['group_name'], base_url('nganh-hoc/' . $news['group_id']));
+        $this->mybreadcrumb->add($news['major_name'], base_url('chuyen-nganh/' . $news['major_id']));
+        $this->mybreadcrumb->add($news['title'], base_url());
+    
+        $data = array();
+        $data['groups'] = $groups;
+        $data['parent_id'] = $news['group_id'];
+        $data['title'] = $news['title'];
+        $data['breadcrumb'] = $news['title'];
+        $data['content'] = $content;
+        $data['breadcrumbs'] = $this->mybreadcrumb->render();
+    
+        $this->load->view('user_main_layout', $data);
     }
 }

@@ -100,6 +100,33 @@ class Major extends CI_Controller {
         $this->load->view('admin_main_layout', $data);
     }
     
+    public function enable($major_id) {
+        $account = $this->session->userdata('admin');
+        if($account == null)
+        {
+            redirect('login');
+        }
+        $params = array(
+            'status' => 1
+        );
+        $this->major_model->update($major_id, $params);
+        redirect('list-major');
+    }
+    
+    public function disable($major_id) {
+        $account = $this->session->userdata('admin');
+        if($account == null)
+        {
+            redirect('login');
+        }
+        $params = array(
+            'status' => 0
+        );
+        $this->major_model->update($major_id, $params);
+        redirect('list-major');
+    }
+    
+//    For customer
     public function show($major_id) {
 	    $major = $this->major_model->getById($major_id);
 	    $news = $this->news_model->getByMajor($major_id, $key = '');

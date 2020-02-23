@@ -24,6 +24,7 @@
                             <th>Nhóm ngành</th>
                             <th>Thời gian đào tạo</th>
                             <th>Bằng tốt nghiệp</th>
+                            <th>Trạng thái</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -41,9 +42,25 @@
                                     <td><?php echo $row['training_time']?> năm</td>
                                     <td><?php echo $row['degree']?></td>
                                     <td>
+                                        <?php if($row['status'] == 0): ?>
+                                        <a class="btn btn-danger btn-xs">Ẩn</a>
+                                        <?php else: ?>
+                                        <a class="btn btn-success btn-xs">Hiển thị</a>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">
                                             <a href="<?php echo base_url('major/edit/' . $row['major_id'])?>"><i class="fa fa-edit"></i></a>
                                         </button>
+                                        <?php if($row['status'] == 0): ?>
+                                        <button type="button" class="btn btn-inverse btn-custom btn-xs">
+                                            <a href="<?php echo base_url('major/enable/' . $row['major_id'])?>"><i class="fa fa-eye"></i></a>
+                                        </button>
+                                        <?php else: ?>
+                                        <button type="button" class="btn btn-inverse btn-custom btn-xs">
+                                            <a href="<?php echo base_url('major/disable/' . $row['major_id'])?>"><i class="fa fa-eye-slash"></i></a>
+                                        </button>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php

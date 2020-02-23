@@ -103,7 +103,7 @@
             </div>
             <div class="row">
                 <label class="col-md-4">Thời gian đào tạo</label>
-                <div class="col-md-8"><?php echo $major['training_time']?></div>
+                <div class="col-md-8"><?php echo $major['training_time']?> năm</div>
             </div>
             <div class="row">
                 <label class="col-md-4">Bằng tốt nghiệp</label>

@@ -40,9 +40,12 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Nội dung</label>
-                            <textarea name='content' id="edit_frame" required class="form-control" placeholder="Enter" data-sample-short>
+                            <textarea name='content' id="edit_frame" required class="form-control ckeditor" placeholder="Enter" data-sample-short>
                                 <?php echo $news['content']?>
                             </textarea>
+                            <!--<div id="edit_frame">-->
+                            <!--    --><?php //echo $news['content']?>
+                            <!--</div>-->
                         </div>
                         <div class="form-group m-b-0">
                             <button type="submit" class="btn btn-inverse btn-custom" name='cmd' value='Save'>Save</button>

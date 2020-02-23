@@ -8,12 +8,8 @@ class Index extends Base_Controller
 		$this->load->model('admin_model');		
 		$this->load->model('editor_model');
 		
-		$this->load->model('position_model');
 		$this->load->model('major_model');
-		$this->load->model('term_model');
-		$this->load->model('student_model');
-		$this->load->model('registration_model');
-		$this->load->model('Group_model');
+		$this->load->model('group_model');
 	}
 	
 //admin controller
