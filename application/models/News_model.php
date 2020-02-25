@@ -49,7 +49,7 @@ class News_model extends CI_Model {
 	    $this->db->join('major m', 'n.major_id = m.major_id');
 	    $this->db->where('n.status', 2);
 	    $this->db->where('m.status', 1);
-        $this->db->limit(10);
+        $this->db->limit(6);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -71,6 +71,12 @@ class News_model extends CI_Model {
         $this->db->where('status', 2);
         $query = $this->db->get($this->table);
         return $query->result_array();
+    }
+    
+    public function countView($news_id) {
+	    $this->db->set('view', 'view + 1', false);
+	    $this->db->where($this->id_name, $news_id);
+	    $this->db->update($this->table);
     }
 
 }

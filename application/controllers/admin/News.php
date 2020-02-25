@@ -198,7 +198,7 @@ class News extends CI_Controller {
     //For customer
     public function detail($news_id) {
         $news = $this->news_model->getById($news_id);
-    
+        $this->countViews($news_id);
         $layoutParams = array(
             'news' => $news,
         );
@@ -222,5 +222,15 @@ class News extends CI_Controller {
         $data['breadcrumbs'] = $this->mybreadcrumb->render();
     
         $this->load->view('user_main_layout', $data);
+    }
+    
+    public function countViews($news_id)
+    {
+        if ($this->session->has_userdata('news_'.$news_id)) {
+            echo 111;
+        }else {
+            $this->session->set_userdata('news_'.$news_id, 1);
+            $this->news_model->countView($news_id);
+        }
     }
 }

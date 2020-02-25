@@ -1,3 +1,5 @@
+<?php
+?>
 <div class="head-content">
     <div class="title"><?= $news['title']?></div>
     <div class="share">

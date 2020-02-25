@@ -53,7 +53,7 @@
                             <hr>
                             <?php foreach($groups as $key => $item): ?>
                             <div class="group">
-                                <h4><a href="<?= base_url('nganh-hoc/' . $item['group_id'])?>"><?= $item['group_name']?></a></h4>
+                                <h4><a href="<?= base_url('nganh-hoc/' . $item['group_id'])?>">ngành <?= $item['group_name']?></a></h4>
                                 <?php if($item['majors'] != null):?>
                                     <?php foreach($item['majors'] as $key => $major):?>
                                     <div class="major">

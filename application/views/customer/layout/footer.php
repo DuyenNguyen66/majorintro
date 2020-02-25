@@ -1,5 +1,5 @@
 <footer class="footer-page">
-    <div class="footer-info">
+    <div class="footer-info row">
         <div class="col-md-4">
             <h3>Cơ sở Hà Nội</h3>
             <ul class="ul-info">
