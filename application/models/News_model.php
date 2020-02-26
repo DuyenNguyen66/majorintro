@@ -73,6 +73,17 @@ class News_model extends CI_Model {
         return $query->result_array();
     }
     
+    public function getByMajorPagination($major_id, $key, $start, $limit) {
+        $this->db->where('major_id', $major_id);
+        if($key != '') {
+            $this->db->where('title like "%' .$key . '%"');
+        }
+        $this->db->where('status', 2);
+        $this->db->limit($limit, $start);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
+    
     public function countView($news_id) {
 	    $this->db->set('view', 'view + 1', false);
 	    $this->db->where($this->id_name, $news_id);

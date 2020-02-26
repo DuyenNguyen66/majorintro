@@ -31,3 +31,27 @@
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
+    <ul class="pagination">
+        <?php if ($current_page > 1 && $total_page > 1): ?>
+            <li class="page-item">
+                <a class="page-link" href="<?= base_url('chuyen-nganh/'.$major['major_id'].'?page='.($current_page - 1)) ?>">Previous</a>
+            </li>
+        <?php endif; ?>
+        <?php for ($i = 1; $i <= $total_page; $i++): ?>
+            <?php if ($i == $current_page): ?>
+                <li class="page-item active">
+                    <a class="page-link" href=""><?php echo $i ?></a>
+                </li>
+            <?php else: ?>
+                <li class="page-item">
+                    <a class="page-link" href="<?= base_url('chuyen-nganh/'.$major['major_id']).'?page='.$i ?>"><?php echo $i ?></a>
+                </li>
+            <?php endif; ?>
+        <?php endfor; ?>
+        <?php if ($current_page < $total_page && $total_page > 1): ?>
+            <li class="page-item">
+                <a class="page-link" href="<?= base_url('chuyen-nganh/'.$major['major_id'].'?page='.($current_page + 1)) ?>">Next</a>
+            </li>
+        <?php endif; ?>
+    </ul>
+

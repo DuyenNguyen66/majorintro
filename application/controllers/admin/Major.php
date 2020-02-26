@@ -131,9 +131,24 @@ class Major extends CI_Controller {
 	    $major = $this->major_model->getById($major_id);
 	    $news = $this->news_model->getByMajor($major_id, $key = '');
 	    
+//	    Pagination
+	    $total_news = count($news);
+        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $limit = 6;
+        $total_page = ceil($total_news/$limit);
+        if ($current_page > $total_page) {
+            $current_page = $total_page;
+        }else if($current_page < 1) {
+            $current_page = 1;
+        }
+        $start = ($current_page - 1) * $limit;
+        $news = $this->news_model->getByMajorPagination($major_id, $key = '', $start, $limit);
+        
         $layoutParams = array(
             'news' => $news,
-            'major' => $major
+            'major' => $major,
+            'current_page' => $current_page,
+            'total_page' => $total_page
         );
         $content = $this->load->view('customer/news_list', $layoutParams, true);
     
