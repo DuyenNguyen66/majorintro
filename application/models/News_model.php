@@ -89,5 +89,35 @@ class News_model extends CI_Model {
 	    $this->db->where($this->id_name, $news_id);
 	    $this->db->update($this->table);
     }
-
+    
+    public function countTotalViews($major_id) {
+	   $this->db->select('sum(view) as total');
+	   $this->db->where('major_id', $major_id);
+	   $query = $this->db->get($this->table);
+	   return $query->first_row('array');
+    }
+    
+    public function countPublishedNews($major_id) {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('major_id', $major_id);
+        $this->db->where('status', 2);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function countPendingNews($major_id) {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('major_id', $major_id);
+        $this->db->where('status', 1);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function countHiddenNews($major_id) {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('major_id', $major_id);
+        $this->db->where('status', 0);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
 }
