@@ -24,6 +24,9 @@ class Editor extends Base_Controller
         $major = $this->major_model->getById($account['major_id']);
 //        dashboard
         $total_views = $this->news_model->countTotalViews($major['major_id'])['total'];
+        if ($total_views == null) {
+            $total_views = 0;
+        }
         $published_news = $this->news_model->countPublishedNews($major['major_id'])['total'];
         $pendding_news = $this->news_model->countPendingNews($major['major_id'])['total'];
         $hidden_news = $this->news_model->countHiddenNews($major['major_id'])['total'];
@@ -50,8 +53,7 @@ class Editor extends Base_Controller
     
     public function add() //for admin
     {
-        $majors = $this->major_model->getAll();
-        
+        $majors = $this->major_model->getMajorWithoutEditor();
         $cmd = $this->input->post("cmd");
         if ($cmd != '') {
             $params['full_name'] = $this->input->post('name');

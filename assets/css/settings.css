@@ -277,6 +277,7 @@ hr {
     box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
     position: relative;
     display: block;
+    margin-bottom: 20px;
 }
 .small-box>.inner {
     padding: 3rem 2rem;
@@ -375,4 +376,22 @@ hr {
 }
 .db-custom {
     margin-top: 20px;
+}
+.bg-group {
+    background-color: #044400;
+}
+.bg-major {
+     background-color: #086d02;
+ }
+.bg-editor{
+    background-color: #0bbc01;
+}
+.bg-publish{
+    background-color: #550000;
+}
+.bg-pending{
+    background-color: #990000;
+}
+.bg-hidden{
+    background-color: #d80000;
 }

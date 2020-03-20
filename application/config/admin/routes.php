@@ -14,6 +14,7 @@ $route['add-group'] = 'group/add';
 $route['list-group'] = 'group/index';
 $route['add-major'] = 'major/add';
 $route['list-major'] = 'major/index';
+$route['stats'] = 'index/stats';
 
 //Editor
 $route['dashboard-e'] = 'editor/index';

@@ -120,4 +120,26 @@ class News_model extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->first_row('array');
     }
+    
+    public function countPublishedNewsForAd() {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('status', 2);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function countPendingNewsForAd() {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('status', 1);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function countHiddenNewsForAd() {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('status', 0);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+
 }

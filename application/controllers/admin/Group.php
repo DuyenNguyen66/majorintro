@@ -103,6 +103,7 @@ class Group extends CI_Controller {
             'status' => 1
         );
         $this->group_model->update($group_id, $params);
+        $this->major_model->updateByGroup($group_id, $params);
         redirect('list-group');
     }
     
@@ -116,6 +117,7 @@ class Group extends CI_Controller {
             'status' => 0
         );
         $this->group_model->update($group_id, $params);
+        $this->major_model->updateByGroup($group_id, $params);
         redirect('list-group');
     }
     

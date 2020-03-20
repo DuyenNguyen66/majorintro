@@ -138,6 +138,11 @@
 
                             </ul>
                         </li>
+                        <li>
+                            <a href="<?php echo base_url('stats'); ?>" class="waves-effect<?php echo isset($parent_id) && $parent_id == 6 ? ' active' : ''; ?>">
+                                <i class="fa fa-home"></i> <span>Thống kê</span>
+                            </a>
+                        </li>
 						
 					<!-- Editor -->
 					<?php elseif(isset($group) && $group == 2):?>

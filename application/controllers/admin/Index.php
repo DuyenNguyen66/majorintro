@@ -10,6 +10,7 @@ class Index extends Base_Controller
 		
 		$this->load->model('major_model');
 		$this->load->model('group_model');
+		$this->load->model('news_model');
 	}
 	
 //admin controller
@@ -19,8 +20,9 @@ class Index extends Base_Controller
 			redirect(base_url('login'));
 		}
 		$admin = $this->admin_model->getAccountByEmail($admin['email']);
+		
 		$params = array(
-			'admin' => $admin,
+			'admin' => $admin
 		);
 		$content = $this->load->view('admin/dashboard', $params, true);
 
@@ -95,5 +97,37 @@ class Index extends Base_Controller
 		} 
 		$this->load->view('admin/register');
 	}
+	
+	public function stats() {
+        $admin = $this->session->userdata('admin');
+        if ($admin == null) {
+            redirect(base_url('login'));
+        }
+        $total_editors = $this->editor_model->countEditor()['total'];
+        $published_news = $this->news_model->countPublishedNewsForAd()['total'];
+        $pendding_news = $this->news_model->countPendingNewsForAd()['total'];
+        $hidden_news = $this->news_model->countHiddenNewsForAd()['total'];
+        $total_groups = $this->group_model->countGroup()['total'];
+        $total_majors =  $this->major_model->countMajor()['total'];
+        
+        $params = array(
+            'total_editors' => $total_editors,
+            'published_news' => $published_news,
+            'pendding_news' => $pendding_news,
+            'hidden_news' => $hidden_news,
+            'total_groups' => $total_groups,
+            'total_majors' => $total_majors
+        );
+        $content = $this->load->view('admin/stats', $params, true);
+        
+        $data = array();
+        $data['customCss'] = array('assets/css/settings.css', 'assets/css/fullcalendar.css', 'assets/css/fullcalendar.print.css');
+        $data['customJs'] = array('assets/js/jquery-ui.custom.min.js', 'assets/js/fullcalendar.js', 'assets/js/student.js');
+        $data['parent_id'] = 6;
+        $data['sub_id'] = 0;
+        $data['group'] = 1;
+        $data['content'] = $content;
+        $this->load->view('admin_main_layout', $data);
+    }
 
 }
