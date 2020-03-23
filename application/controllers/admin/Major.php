@@ -130,36 +130,43 @@ class Major extends CI_Controller {
     public function show($major_id) {
 	    $major = $this->major_model->getById($major_id);
 	    $news = $this->news_model->getByMajor($major_id, $key = '');
-	    
-//	    Pagination
-	    $total_news = count($news);
-        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $limit = 6;
-        $total_page = ceil($total_news/$limit);
-        if ($current_page > $total_page) {
-            $current_page = $total_page;
-        }else if($current_page < 1) {
-            $current_page = 1;
-        }
-        $start = ($current_page - 1) * $limit;
-        $news = $this->news_model->getByMajorPagination($major_id, $key = '', $start, $limit);
-        
-        $layoutParams = array(
-            'news' => $news,
-            'major' => $major,
-            'current_page' => $current_page,
-            'total_page' => $total_page
-        );
-        $content = $this->load->view('customer/news_list', $layoutParams, true);
     
-        $groups = $this->group_model->getAll();
-        foreach ($groups as $key => $item) {
-            $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
-        }
-        $this->mybreadcrumb->add('Trang chủ', base_url());
-        $this->mybreadcrumb->add('Ngành ' . $major['group_name'], base_url('nganh-hoc/' . $major['group_id']));
-        $this->mybreadcrumb->add($major['major_name'], base_url('chuyen-nganh/' . $major['major_id']));
+        if($news != null) {
         
+            //	    Pagination
+            $total_news = count($news);
+            $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $limit = 6;
+            $total_page = ceil($total_news / $limit);
+            if ($current_page > $total_page) {
+                $current_page = $total_page;
+            } else {
+                if ($current_page < 1) {
+                    $current_page = 1;
+                }
+            }
+            $start = ($current_page - 1) * $limit;
+            $news = $this->news_model->getByMajorPagination($major_id, $key = '', $start, $limit);
+        }else {
+            $current_page = 0;
+            $total_page = 0;
+        }
+    
+        $layoutParams = array(
+                'news' => $news,
+                'major' => $major,
+                'current_page' => $current_page,
+                'total_page' => $total_page
+            );
+            $content = $this->load->view('customer/news_list', $layoutParams, true);
+        
+            $groups = $this->group_model->getAll();
+            foreach ($groups as $key => $item) {
+                $groups[$key]['majors'] = $this->major_model->getByGroup($item['group_id']);
+            }
+            $this->mybreadcrumb->add('Trang chủ', base_url());
+            $this->mybreadcrumb->add('Ngành '.$major['group_name'], base_url('nganh-hoc/'.$major['group_id']));
+            $this->mybreadcrumb->add($major['major_name'], base_url('chuyen-nganh/'.$major['major_id']));
         $data = array();
         $data['groups'] = $groups;
         $data['parent_id'] = $major['group_id'];
