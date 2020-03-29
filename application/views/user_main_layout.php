@@ -30,7 +30,8 @@
 
 
 <body class="fixed-left">
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0&appId=205819374138873&autoLogAppEvents=1"></script>
 <!-- Begin page -->
 <div id="wrapper">
     
@@ -42,7 +43,7 @@
     <div class="middle-page row">
             <div class="container">
                 <div class="home row">
-                    <div class="content-right col-md-4">
+                    <div class="content-left col-md-4">
                         <div class="search-box">
                             <input id="search-text" type="text" class="form-control" placeholder="Tìm kiếm bài viết" >
                             <i class="fas fa-search"></i>
@@ -52,7 +53,7 @@
                             <hr>
                             <?php foreach($groups as $key => $item): ?>
                             <div class="group">
-                                <h4><a href="<?= base_url('nganh-hoc/' . $item['group_id'])?>"><?= $item['group_name']?></a></h4>
+                                <h4><a href="<?= base_url('nganh-hoc/' . $item['group_id'])?>">ngành <?= $item['group_name']?></a></h4>
                                 <?php if($item['majors'] != null):?>
                                     <?php foreach($item['majors'] as $key => $major):?>
                                     <div class="major">
@@ -66,7 +67,7 @@
                             <?php endforeach;?>
                         </div>
                     </div>
-                    <div class="content-left col-md-8">
+                    <div class="content-right col-md-8">
                         <?php
                         echo isset($content) ? $content : 'Empty page';
                         ?>

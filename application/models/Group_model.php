@@ -41,4 +41,16 @@ class Group_model extends CI_model
         $this->db->where($this->id_name, $id);
         $this->db->update($this->table, $params);
     }
+    
+    public function getActiveGroup() {
+        $this->db->where('status', 1);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
+    
+    public function countGroup() {
+        $this->db->select('count(group_id) as total');
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
 }

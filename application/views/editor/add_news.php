@@ -33,7 +33,7 @@
                             <div class="uploader col-md-6" onclick="$('#imagePhoto').click()">
                                 <button type="button" class="btn">Upload</button>
                             </div>
-                            <input type="file" accept="image/*" name="image" id="imagePhoto"/>
+                            <input type="file" accept="image/*" name="image" id="imagePhoto" required/>
                         </div>
                     </div>
                     <!--Content edit-->

@@ -44,7 +44,7 @@
                                         <?php endif; ?>
                                     </td>
                                     <td><?php echo date('d/m/Y h:iA', $row['created_at'])?></td>
-                                    <td>000</td>
+                                    <td><?php echo $row['view']?></td>
                                     <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">
                                             <a href="<?php echo base_url('news/edit/' . $row['news_id'])?>"><i class="fa fa-edit"></i></a>

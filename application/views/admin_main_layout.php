@@ -138,6 +138,11 @@
 
                             </ul>
                         </li>
+                        <li>
+                            <a href="<?php echo base_url('stats'); ?>" class="waves-effect<?php echo isset($parent_id) && $parent_id == 6 ? ' active' : ''; ?>">
+                                <i class="fa fa-home"></i> <span>Thống kê</span>
+                            </a>
+                        </li>
 						
 					<!-- Editor -->
 					<?php elseif(isset($group) && $group == 2):?>
@@ -221,8 +226,7 @@
 <script src="<?php echo base_url('assets/js/jquery.core.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.app.js'); ?>"></script>
 
-<script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script>
-
+<script src="<?php echo base_url('assets/plugins/ckeditor/ckeditor.js')?>"></script>
 <?php
 if (isset($customJs) && is_array($customJs)) {
 	foreach ($customJs as $script) {

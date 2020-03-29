@@ -64,4 +64,10 @@ class Editor_model extends CI_Model
         return $query->result_array();
     }
     
+    public function countEditor() {
+        $this->db->select('count(editor_id) as total');
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
 }

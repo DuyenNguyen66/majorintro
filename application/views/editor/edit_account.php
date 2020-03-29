@@ -26,13 +26,12 @@
                         <div class="form-group row">
                             <label class="col-md-12">Avatar</label>
                             <div class="col-md-4">
-                                <img src="<?php echo $editor['avatar']?>" id='image' width='120' height='120' style='border: 4px solid #c6c6c6; border-radius: 4px'/>
+                                <img src="<?php echo media_thumbnail($editor['avatar'])?>" id='image' width='120' height='120' style='border: 4px solid #c6c6c6; border-radius: 4px'/>
                             </div>
-                            <div class="col-md-8">
-                                <div class="" onclick="$('#imagePhoto').click()">
-                                    <input type="file" accept="image/*" name="image" id="imagePhoto" />
-                                </div>
+                            <div class="uploader col-md-6" onclick="$('#imagePhoto').click()">
+                                <button type="button" class="btn">Upload</button>
                             </div>
+                            <input type="file" accept="image/*" name="image" id="imagePhoto" required/>
                         </div>
                     </div>
                     <div class="col-md-6">

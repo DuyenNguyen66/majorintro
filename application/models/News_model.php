@@ -34,8 +34,12 @@ class News_model extends CI_Model {
     }
     
     public function getById($id) {
-	    $this->db->where($this->id_name, $id);
-	    $query = $this->db->get($this->table);
+	    $this->db->select('*');
+	    $this->db->from('news n');
+	    $this->db->join('major m', 'n.major_id = m.major_id');
+	    $this->db->join('major_group mg', 'm.group_id = mg.group_id');
+	    $this->db->where('n.news_id', $id);
+	    $query = $this->db->get();
 	    return $query->first_row('array');
     }
     
@@ -43,7 +47,9 @@ class News_model extends CI_Model {
 	    $this->db->select('n.*, m.major_name');
 	    $this->db->from('news n');
 	    $this->db->join('major m', 'n.major_id = m.major_id');
-        $this->db->limit(10);
+	    $this->db->where('n.status', 2);
+	    $this->db->where('m.status', 1);
+        $this->db->limit(6);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -52,6 +58,7 @@ class News_model extends CI_Model {
         $this->db->from('news n');
         $this->db->join('major m', 'n.major_id = m.major_id');
         $this->db->where('n.title like "%' . $key . '%"');
+        $this->db->where('n.status', 2);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -61,8 +68,78 @@ class News_model extends CI_Model {
 	    if($key != '') {
 	        $this->db->where('title like "%' .$key . '%"');
         }
+        $this->db->where('status', 2);
         $query = $this->db->get($this->table);
         return $query->result_array();
+    }
+    
+    public function getByMajorPagination($major_id, $key, $start, $limit) {
+        $this->db->where('major_id', $major_id);
+        if($key != '') {
+            $this->db->where('title like "%' .$key . '%"');
+        }
+        $this->db->where('status', 2);
+        $this->db->limit($limit, $start);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
+    
+    public function countView($news_id) {
+	    $this->db->set('view', 'view + 1', false);
+	    $this->db->where($this->id_name, $news_id);
+	    $this->db->update($this->table);
+    }
+    
+    public function countTotalViews($major_id) {
+	   $this->db->select('sum(view) as total');
+	   $this->db->where('major_id', $major_id);
+	   $query = $this->db->get($this->table);
+	   return $query->first_row('array');
+    }
+    
+    public function countPublishedNews($major_id) {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('major_id', $major_id);
+        $this->db->where('status', 2);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function countPendingNews($major_id) {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('major_id', $major_id);
+        $this->db->where('status', 1);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function countHiddenNews($major_id) {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('major_id', $major_id);
+        $this->db->where('status', 0);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function countPublishedNewsForAd() {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('status', 2);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function countPendingNewsForAd() {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('status', 1);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function countHiddenNewsForAd() {
+        $this->db->select('count(news_id) as total');
+        $this->db->where('status', 0);
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
     }
 
 }

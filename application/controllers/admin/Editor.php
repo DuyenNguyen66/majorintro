@@ -8,6 +8,7 @@ class Editor extends Base_Controller
         parent::__construct();
         $this->load->model('editor_model');
         $this->load->model('major_model');
+        $this->load->model('news_model');
     }
     
     public function index()
@@ -21,9 +22,22 @@ class Editor extends Base_Controller
             $this->session->set_flashdata('acc_mess', 'Thay đổi mật khẩu để kích hoạt tài khoản');
         }
         $major = $this->major_model->getById($account['major_id']);
+//        dashboard
+        $total_views = $this->news_model->countTotalViews($major['major_id'])['total'];
+        if ($total_views == null) {
+            $total_views = 0;
+        }
+        $published_news = $this->news_model->countPublishedNews($major['major_id'])['total'];
+        $pendding_news = $this->news_model->countPendingNews($major['major_id'])['total'];
+        $hidden_news = $this->news_model->countHiddenNews($major['major_id'])['total'];
+        
         $layoutParams = array(
             'account' => $account,
-            'major' => $major
+            'major' => $major,
+            'total_views' => $total_views,
+            'published_news' => $published_news,
+            'pendding_news' => $pendding_news,
+            'hidden_news' => $hidden_news
         );
         $content = $this->load->view('editor/dashboard', $layoutParams, true);
         
@@ -39,8 +53,7 @@ class Editor extends Base_Controller
     
     public function add() //for admin
     {
-        $majors = $this->major_model->getAll();
-        
+        $majors = $this->major_model->getMajorWithoutEditor();
         $cmd = $this->input->post("cmd");
         if ($cmd != '') {
             $params['full_name'] = $this->input->post('name');

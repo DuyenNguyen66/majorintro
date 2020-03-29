@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nhóm ngành</label>
-                            <select class="building_id form-control" name="group_id" required="">
+                            <select class="building_id form-control" name="group_id" required>
                                 <option value="<?php echo $major['group_id']?>"><?php echo $major['group_name']?></option>
                                 <?php foreach($groups as $group):?>
                                     <option value="<?php echo $group['group_id']?>"><?php echo $group['group_name']?></option>

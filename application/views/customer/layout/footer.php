@@ -71,4 +71,9 @@
             </a>
         </div>
     </div>
+    <div class="btn-top">
+        <button type="button" class="btn btn-warning">
+            <a href="#"><i class="fas fa-chevron-up"></i></a>
+        </button>
+    </div>
 </footer>

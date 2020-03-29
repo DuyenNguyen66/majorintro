@@ -25,6 +25,11 @@ class Major_model extends CI_Model {
 		$this->db->where($this->id_name, $id);
 		$this->db->update($this->table, $params);
 	}
+    
+    public function updateByGroup($id, $params) {
+        $this->db->where('group_id', $id);
+        $this->db->update($this->table, $params);
+    }
 
 	public function getById($id) {
 	    $this->db->select('m.*, mg.group_id, mg.group_name');
@@ -48,7 +53,21 @@ class Major_model extends CI_Model {
     
     public function getByGroup($group_id) {
 	    $this->db->where('group_id', $group_id);
+	    $this->db->where('status', 1);
 	    $query = $this->db->get($this->table);
 	    return $query->result_array();
+    }
+    
+    public function countMajor() {
+        $this->db->select('count(major_id) as total');
+        $query = $this->db->get($this->table);
+        return $query->first_row('array');
+    }
+    
+    public function getMajorWithoutEditor() {
+        $sql = 'select * from major where major_id not in (select major_id from editor)';
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    
     }
 } 

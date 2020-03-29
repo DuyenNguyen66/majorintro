@@ -21,6 +21,7 @@
                             <th>STT</th>
                             <th>Mã ngành</th>
                             <th>Tên nhóm ngành</th>
+                            <th>Trạng thái</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -35,9 +36,25 @@
                                     <td><?php echo $row['group_code'] ?></td>
                                     <td><?php echo $row['group_name']?></td>
                                     <td>
+                                        <?php if($row['status'] == 0): ?>
+                                            <a class="btn btn-danger btn-xs">Ẩn</a>
+                                        <?php else: ?>
+                                            <a class="btn btn-success btn-xs">Hiển thị</a>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
                                         <button type="button" class="btn btn-inverse btn-custom btn-xs">
                                             <a href="<?php echo base_url('group/edit/' . $row['group_id'])?>"><i class="fa fa-edit"></i></a>
                                         </button>
+                                        <?php if($row['status'] == 0): ?>
+                                            <button type="button" class="btn btn-inverse btn-custom btn-xs">
+                                                <a href="<?php echo base_url('group/enable/' . $row['group_id'])?>"><i class="fa fa-eye"></i></a>
+                                            </button>
+                                        <?php else: ?>
+                                            <button type="button" class="btn btn-inverse btn-custom btn-xs">
+                                                <a href="<?php echo base_url('group/disable/' . $row['group_id'])?>"><i class="fa fa-eye-slash"></i></a>
+                                            </button>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php

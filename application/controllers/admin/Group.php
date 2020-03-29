@@ -93,6 +93,34 @@ class Group extends CI_Controller {
         $this->load->view('admin_main_layout', $data);
     }
     
+    public function enable($group_id) {
+        $account = $this->session->userdata('admin');
+        if($account == null)
+        {
+            redirect('login');
+        }
+        $params = array(
+            'status' => 1
+        );
+        $this->group_model->update($group_id, $params);
+        $this->major_model->updateByGroup($group_id, $params);
+        redirect('list-group');
+    }
+    
+    public function disable($group_id) {
+        $account = $this->session->userdata('admin');
+        if($account == null)
+        {
+            redirect('login');
+        }
+        $params = array(
+            'status' => 0
+        );
+        $this->group_model->update($group_id, $params);
+        $this->major_model->updateByGroup($group_id, $params);
+        redirect('list-group');
+    }
+    
     //For customer
     public function show($group_id) {
 	    $group = $this->group_model->getById($group_id);
